@@ -25,12 +25,12 @@ class LoginController extends Controller {
         else if (isset($_POST['admin_login']))
         {
             $_SESSION['person_type'] = 'admin';
-            header("Location: index.php?module=reports");
+            header("Location: index.php?module=report");
         }
         else if (isset($_POST['super_admin_login']))
         {
             $_SESSION['person_type'] = 'super_admin';
-            header("Location: index.php?module=reports");
+            header("Location: index.php?module=report");
         }
 
         include "views/login.php";

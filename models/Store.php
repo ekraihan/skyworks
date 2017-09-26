@@ -8,9 +8,9 @@
 abstract class Store {
     public abstract function create();
 
-    public abstract function get_by_id();
+    public abstract function get_by_id($id);
 
-    public abstract function search();
+    public abstract function search($param);
 
     /**
      * @param           $object

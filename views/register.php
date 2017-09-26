@@ -7,12 +7,9 @@
 
 ?>
 
-<div class="contact">
-    <h1>User Registration</h1>
-    <?php if ($send_email_error) : ?>
-        <h3 class="error"><?php echo $send_email_error ?></h3>
-    <?php endif; ?>
-    <form action="lab3.php" method="post">
+<div class="login">
+    <h1>Registration</h1>
+    <form action="index.php?module=register" method="post">
         <?php if (!$first_name_valid) : ?>
             <span class='error'>Field Required</span>
         <?php endif; ?>
@@ -69,42 +66,6 @@
                placeholder="Confirm Password"
                value="<?php echo $confirm_password ?>"/>
 
-        <?php foreach ($genders as $gender): ?>
-            <div class="radio-div">
-                <input type="radio"
-                       name="gender"
-                       value="<?php echo $gender ?>"
-                    <?php if ($_SESSION['user']->is_gender_selected($gender)) echo "checked"?>/>
-                <span><?php echo $gender ?></span>
-            </div>
-        <?php endforeach; ?>
-
-        <span class="department-name">Department:</span>
-        <select name = "department">
-            <?php foreach ($departments as $department): ?>
-                <option <?php if ($_SESSION['user']->is_department_selected($department)) echo "selected" ?>>
-                    <?php echo $department ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-        <br>
-
-        <span class="status-name">Status:</span>
-        <?php foreach ($statuses as $status): ?>
-            <div class="status-div">
-                <input type="checkbox"
-                       name="status[]"
-                       value="<?php echo $status ?>"
-                    <?php if ($_SESSION['user']->is_status_selected($status)) echo "checked"?>/>
-        <span><?php echo $status ?></span>
-            </div>
-        <?php endforeach; ?>
-
-        <span class="agreement">By clicking this checkbox, you agree to the terms and policies</span><br>
-        <?php if (!$agreed) : ?>
-            <span class='error'>You must agree to the terms!</span></br>
-        <?php endif; ?>
-        <input type="checkbox" name="agree"/>
-        <input name="enter" type="submit" value="Submit" />
+        <input name="register" type="submit" value="Submit" />
     </form>
 </div>

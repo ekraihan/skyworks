@@ -5,41 +5,31 @@
  * DATE: 9/17/17
  */
 
-include_once __DIR__ . "/../utils/string_util.php";
+include_once "models/BasePerson.php";
+include_once "utils/string_util.php";
 
-class User {
-
-    private $first_name;
-    private $last_name;
-    private $password;
-    private $email;
-
-    public function __construct() { }
-
-    public function __get($property)
-    {
-        if (property_exists($this, $property))
-            return $this->$property;
-
-        throw new InvalidArgumentException("No Such Property ".$property);
-    }
-
-    public function __set($property, $value)
-    {
-        $this->$property = $value;
-    }
+class User extends BasePerson {
 
     /**
      * is_valid
      *
+     * @param       $confirm_email
+     * @param       $confirm_password
      * @return      bool
      */
-    public function is_valid()
+    public function is_valid($confirm_email, $confirm_password)
     {
         return $this->password_valid()
             && $this->first_name_valid()
             && $this->last_name_valid()
-            && $this->email_valid();
+            && $this->email_valid()
+            && $this->emails_match($confirm_email)
+            && $this->passwords_match($confirm_password);
+    }
+
+    public function __set($name, $value)
+    {
+        $this->$name = $value;
     }
 
     /**
@@ -63,23 +53,13 @@ class User {
     }
 
     /**
-     * full_name
-     *
-     * @return      string
-     */
-    public function full_name()
-    {
-        return $this->first_name.' '.$this->last_name;
-    }
-
-    /**
      * password_valid
      *
      * @return      bool
      */
     public function password_valid()
     {
-        return strlen($this->password) > 6 && $this->is_alphanumeric($this->password);
+        return validate_password($this->password);
     }
 
     /**
@@ -92,12 +72,33 @@ class User {
     }
 
     /**
-     * user_name
-     *
-     * @return      string
+     * email_present
+     * @return      mixed
      */
-    public function user_name()
+    public function email_present()
     {
-        return strtolower($this->first_name).'.'.strtolower($this->last_name);
+        return $this->email !== "";
+    }
+
+    /**
+     * passwords_match
+     *
+     * @param       $password
+     * @return      bool
+     */
+    public function passwords_match($password)
+    {
+        return $password === $this->password;
+    }
+
+    /**
+     * emails_match
+     *
+     * @param       $email
+     * @return      bool
+     */
+    public function emails_match($email)
+    {
+        return $email === $this->email;
     }
 }

@@ -15,6 +15,6 @@ class EditController extends RestrictedController {
 
     function is_valid_user()
     {
-        return isset($_SESSION['current_superadmin']);
+        return isset($_SESSION['person_type']);
     }
 }

@@ -1,0 +1,7 @@
+@import 'ticket.css';
+@import 'header.css';
+@import 'login.css';
+
+main {
+    padding: 40px 90px 30px 90px;
+}
