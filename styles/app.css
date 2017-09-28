@@ -1,6 +1,17 @@
 @import 'ticket.css';
 @import 'header.css';
 @import 'login.css';
+@import 'new-ticket.css';
+
+
+body {
+    font-family: Raleway,sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: darkblue;
+}
 
 main {
     padding: 40px 90px 30px 90px;

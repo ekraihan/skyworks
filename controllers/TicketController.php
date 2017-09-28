@@ -15,7 +15,7 @@ class TicketController extends RestrictedController
     {
         $tickets = MockStore::get_all_by_type('ticket');
         $filter_options = MockStore::get_all_by_type('filter_option');
-        $current_ticket = "";
+        $current_ticket = null;
 
         if (isset($_GET['ticket_id']))
             $current_ticket = MockStore::get_by_id('ticket', $_GET['ticket_id']);

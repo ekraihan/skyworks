@@ -5,13 +5,27 @@
  * DATE: 9/24/17
  */
 
-
-
 class MockStore
 {
     static private $products = array("Product 1", "Product 2", "Product 3", "Product 4", "Product 5", "Product 6");
     static private $admins = array("Admin 1", "Admin 2", "Admin 3", "Admin 4", "Admin 5", "Admin 6");
-    static private $tickets = array("Ticket 1", "Ticket 2", "Ticket 3", "Ticket 4", "Ticket 5", "Ticket 6");
+    static private $tickets = array(
+        array(
+            "name" => "Ticket 1",
+            "messages"=>array("I need help", "I can help")
+        ),
+        array(
+            "name"=>"Ticket 2",
+            "messages"=>array("I need help", "I can help")
+        ),
+        array(
+            "name"=>"Ticket 3",
+            "messages"=>array("I need help", "I can help")
+        )
+    );
+
+
+
     static private $users = array("User 1", "User 2", "User 3", "User 4", "User 5", "User 6");
     static private $agents = array("Agent 1", "Agent 2", "Agent 3", "Agent 4", "Agent 5", "Agent 6");
     static private $filter_options = array("Filter Option 1", "Filter Option 2", "Filter Option 3", "Filter Option 4", "Filter Option 5", "Filter Option 6");

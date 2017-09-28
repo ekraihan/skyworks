@@ -14,15 +14,27 @@ include_once "controllers/HeaderController.php";
 include_once "controllers/PersonInfoController.php";
 include_once "controllers/ReportController.php";
 include_once "controllers/EditController.php";
+include_once "models/Roles.enum.php";
 
-include "templates/header.php";
+session_start();
 
-$module = ((isset($_GET['module']) && $_GET['module'] !== "") ? $_GET['module'] : 'login').'Controller';
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
-$controller = new $module();
-$controller->run($action);
+if (isset($_GET['module']) && class_exists($_GET['module']."Controller") && $_GET['module'] !== 'login')
+{
 
+    include "templates/header.php";
 
-include "templates/footer.php";
+    $controller = $_GET['module'] . 'Controller';
+    $controller = new $controller();
+    $controller->run($action);
+
+    include "templates/footer.php";
+}
+else
+{
+    $controller = new LoginController();
+    $controller->run($action);
+}
+
 

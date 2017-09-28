@@ -11,7 +11,7 @@ abstract class Controller implements BaseController {
 
     final function run($action)
     {
-        $action = method_exists($this, $action) ? $action : 'default_action';
+        $this->action = $action = method_exists($this, $action) ? $action : 'default_action';
 
         $this->$action();
     }

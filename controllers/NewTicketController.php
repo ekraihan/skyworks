@@ -6,11 +6,13 @@
  */
 
 include_once "controllers/RestrictedController.php";
+include_once "models/MockStore.php";
 
 class NewTicketController extends RestrictedController
 {
     function default_action()
     {
+        $products = MockStore::get_all_by_type('product');
         include "views/new_ticket.php";
     }
 

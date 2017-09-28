@@ -1,13 +1,19 @@
-.ticket-view {
+.tickets {
     display: flex;
 }
 
-.ticket-view .tickets {
+.ticket-view .filter {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
+}
+
+.ticket-view .ticket-list {
     display: flex;
     flex-direction: column;
 }
 
-.ticket-view .tickets .ticket {
+.ticket-view .ticket-list .ticket {
     margin: 10px;
     border: 1px solid grey;
     border-radius: 4px;
@@ -22,4 +28,22 @@
     margin-left: 50px;
     border: 1px solid grey;
     padding: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ticket-view .ticket-box .message {
+    padding: 10px;
+    margin-bottom: 30px;
+    border: 1px solid grey;
+}
+
+.ticket-view .ticket-box .message-string {
+    width: 70%;
+}
+
+.ticket-view .ticket-box .reply
+{
+    display: flex;
+    justify-content: flex-end;
 }
