@@ -27,7 +27,7 @@
 
             <button type="submit" name="login">Login</button>
 
-            <a href="index.php?module=register"><span>Register</span></a>
+            <span><a href="index.php?module=register">Register</a></span>
         </form>
     </div>
 </body>

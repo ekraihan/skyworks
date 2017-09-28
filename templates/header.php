@@ -20,7 +20,7 @@
 </head>
 <body>
 <header>
-    <a href="index.php"><h1>Skyworks</h1></a>
+    <a href="index.php"><h1 class="site-title">TicketHawk</h1></a>
 
     <nav>
 

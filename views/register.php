@@ -7,7 +7,7 @@
 
 ?>
 
-<div class="login">
+<div class="register-view">
     <h1>Registration</h1>
     <form action="index.php?module=register" method="post">
         <?php if (!$first_name_valid) : ?>
@@ -66,6 +66,6 @@
                placeholder="Confirm Password"
                value="<?php echo $confirm_password ?>"/>
 
-        <input name="register" type="submit" value="Submit" />
+        <input name="register" type="submit" value="Submit"/>
     </form>
 </div>

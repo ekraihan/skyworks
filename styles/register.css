@@ -1,0 +1,21 @@
+.register-view {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register-view h1 {
+    text-align: center;
+}
+
+.register-view form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-view form input {
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 200px;
+}

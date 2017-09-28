@@ -1,0 +1,39 @@
+.users {
+    display: flex;
+}
+
+.edit-view .filter {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
+}
+
+.edit-view .user-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-view .user-list .user {
+    margin: 10px;
+    border: 1px solid grey;
+    border-radius: 4px;
+    padding: 10px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.edit-view .user-box {
+    width: 100%;
+    margin-left: 50px;
+    border: 1px solid grey;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.edit-view .user-info{
+    display: flex;
+    flex-direction: column;
+}
