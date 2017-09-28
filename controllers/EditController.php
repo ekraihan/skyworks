@@ -13,8 +13,10 @@ class EditController extends RestrictedController {
     {
         $is_editing = isset($_POST['edit-btn']);
 
-        $users = MockStore::get_all_by_type('user');
-        $filter_options = MockStore::get_all_by_type('filter_option');
+        $is_adding_user = isset($_POST['add-usr-btn']);
+
+        $users = MockStore::get_all_by_type('users');
+        $filter_options = MockStore::get_all_by_type('filter_options');
 
         $current_user = null;
         $current_user_id = null;
@@ -22,7 +24,7 @@ class EditController extends RestrictedController {
         if (isset($_GET['user_id']))
         {
             $current_user_id = $_GET['user_id'];
-            $current_user = MockStore::get_by_id('user', $current_user_id);
+            $current_user = MockStore::get_by_id('users', $current_user_id);
         }
 
 

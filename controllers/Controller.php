@@ -15,20 +15,4 @@ abstract class Controller implements BaseController {
 
         $this->$action();
     }
-
-//
-//    private static $instance = null;
-//
-//    static function instance()
-//    {
-//        if (!empty(self::$instance))
-//        {
-//            return self::$instance;
-//        }
-//
-//        $called_class = get_called_class();
-//        self::$instance = new $called_class();
-//
-//        return self::$instance;
-//    }
 }

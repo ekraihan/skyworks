@@ -30,9 +30,25 @@
                     <span><?php echo $user['first_name'].' '.$user['last_name']?></span>
                 </a>
             <?php endforeach; ?>
+            <form method="post" action="index.php?module=edit">
+                <button name="add-usr-btn" type="submit">+ Add User</button>
+            </form>
         </div>
         <div class="user-box">
-            <?php if (isset($current_user)) : ?>
+
+            <?php if ($is_adding_user) : ?>
+                <form class="user-info" method="post" action="index.php?module=edit">
+                    <div>
+                        <input placeholder="First Name"/>
+                    </div>
+                    <div>
+                        <input placeholder="Last Name"/>
+                    </div>
+                    <div>
+                        <button type="submit">Save</button>
+                    </div>
+                </form>
+            <?php elseif (isset($current_user)) : ?>
                 <form class="user-info" method="post" action="index.php?module=edit&user_id=<?php echo $current_user_id; ?>">
                     <div>
                         <span>First Name: </span>
@@ -57,11 +73,13 @@
                     <div>
                         <span>Role: </span><?php echo $current_user['role'] ?>
                     </div>
+
                     <div>
                         <?php if ($is_editing) : ?>
                             <button class="edit-user" name="save-btn" type="submit">Save</button>
                         <?php else : ?>
                             <button class="edit-user" name="edit-btn" type="submit">Edit</button>
+                            <button class="edit-user" name="delete-btn" type="submit">Delete</button>
                         <?php endif; ?>
                     </div>
                 </form>
