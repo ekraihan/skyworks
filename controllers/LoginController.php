@@ -15,13 +15,26 @@ class LoginController extends Controller {
     function default_action()
     {
         if (isset($_SESSION['person_type']))
-            header("Location: index.php?module=ticket");
+            //header("Location: index.php?module=ticket");
 
         if (isset($_POST['login']))
         {
             $_SESSION['person_type'] = Roles::USER;
-            header("Location: index.php?module=ticket");
+            //header("Location: index.php?module=ticket");
         }
+
+        $connection = new PDO("mysql:host=localhost;dbname=ekraihan_db", "ekraihan", "77aadd");
+//        foreach($connection->query("Call GET_USERS()") as $row) {
+//            foreach ($row as $row_name => $item){
+//                echo $row_name . ": " . $item . "<br>";
+//            }
+//            echo "<br>";
+//        }
+
+        $stm = $connection->query("SELECT VALIDATE_USER('blah','test21')");
+
+        if ($stm->fetchColumn())
+            print "blah";
 
         include "views/login.php";
     }

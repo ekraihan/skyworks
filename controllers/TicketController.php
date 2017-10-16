@@ -25,10 +25,18 @@ class TicketController extends RestrictedController
             $current_ticket = MockStore::get_by_id('tickets', $_GET['ticket_id']);
 
         include "views/tickets.php";
+
+//        $dd = array();
+//        foreach(get_class_vars($this) as $var ):
+//           array_push($dd, $var);
+//        endforeach;
+//
+//        render$dd);
     }
 
     function is_valid_user()
     {
         return isset($_SESSION['person_type']);
     }
+
 }
