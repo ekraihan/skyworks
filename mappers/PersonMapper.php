@@ -11,7 +11,7 @@ include_once "models/Agent.php";
 class PersonMapper extends Mapper {
     static private $get_admin_by_username = "Call GET_ADMIN_BY_USERNAME(?)";
     static private $get_agent_by_username = "Call GET_AGENT_BY_USERNAME(?)";
-
+    static private $get_user_by_username = "Call GET_USER_BY_USERNAME(?)";
 
     static function get_admin_by_username($username) {
         $statement = self::get_connection()->prepare(self::$get_admin_by_username);
@@ -24,6 +24,13 @@ class PersonMapper extends Mapper {
         $statement = self::get_connection()->prepare(self::$get_agent_by_username);
         $statement->execute(func_get_args());
         $statement->setFetchMode(PDO::FETCH_CLASS, 'Agent');
+        return $statement->fetch();
+    }
+
+    static function get_user_by_username($username) {
+        $statement = self::get_connection()->prepare(self::$get_user_by_username);
+        $statement->execute(func_get_args());
+        $statement->setFetchMode(PDO::FETCH_CLASS, 'User');
         return $statement->fetch();
     }
 }

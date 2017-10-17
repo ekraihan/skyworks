@@ -22,8 +22,11 @@
         <h1>Ticket Hawk</h1>
 
         <form action="index.php?module=login" method="post">
-            <input placeholder="Username">
-            <input placeholder="Password">
+            <?php if (!$user_valid) : ?>
+                <div>Username or Password invalid</div>
+            <?php endif; ?>
+            <input placeholder="Username" name="username">
+            <input placeholder="Password" name="password">
 
             <button type="submit" name="login">Login</button>
 

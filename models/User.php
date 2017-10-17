@@ -10,6 +10,11 @@ include_once "utils/string_util.php";
 
 class User extends BasePerson {
 
+    function __construct()
+    {
+        $this->Role = Roles::USER;
+    }
+
     /**
      * is_valid
      *

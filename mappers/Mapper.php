@@ -6,7 +6,7 @@
  */
 
 class Mapper {
-    static function get_connection() {
+    protected static function get_connection() {
         static $connection = null;
 
         if ($connection === null)

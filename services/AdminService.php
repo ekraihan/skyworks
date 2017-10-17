@@ -8,7 +8,7 @@
 include_once "mappers/PersonMapper.php";
 
 class AdminService {
-    static function get_admin_by_username($username) {
+    static function get_by_username($username) {
         return PersonMapper::get_admin_by_username($username);
     }
 }
