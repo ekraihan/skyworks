@@ -6,7 +6,7 @@
  */
 
 class Agent extends BasePerson {
-    private $Rating;
+    protected $Rating;
 
     function __construct()
     {

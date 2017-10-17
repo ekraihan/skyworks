@@ -17,7 +17,7 @@ class PersonInfoController extends RestrictedController
 
     function is_valid_user()
     {
-        return isset($_SESSION['person_type']);
+        return isset($_SESSION['current_person']);
         // AND is the person who's profile you are requesting the same as the current user logged in
     }
 }
