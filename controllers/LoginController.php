@@ -47,7 +47,6 @@ class LoginController extends Controller {
             {
                 $user_valid = false;
             }
-
         }
 
         include "views/admin_login.php";
@@ -55,13 +54,21 @@ class LoginController extends Controller {
 
     function login_agent()
     {
-        if (isset($_SESSION['person_type']) && $_SESSION['person_type'] === Roles::AGENT)
-            header("Location: index.php?module=ticket");
+//        if (isset($_SESSION['person_type']) && $_SESSION['person_type'] === Roles::AGENT)
+//            header("Location: index.php?module=ticket");
 
         if (isset($_POST['login']))
         {
-            $_SESSION['person_type'] = Roles::AGENT;
-            header("Location: index.php?module=ticket");
+            if (LoginService::login_agent($_POST['username'], $_POST['password'])) {
+                $_SESSION['current_person'] = AdminService::get_admin_by_username($_POST['username']);
+                $_SESSION['current_person']->set_role(Roles::ADMIN);
+                header("Location: index.php?module=report");
+            }
+            else
+            {
+                $user_valid = false;
+            }
+
         }
 
         include "views/agent_login.php";

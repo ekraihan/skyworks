@@ -7,9 +7,4 @@
 
 class Admin extends BasePerson {
     private $SuperAdmin;
-
-    function speak() {
-        echo $this->Email;
-    }
-
 }

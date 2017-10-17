@@ -22,8 +22,8 @@
         <h1>Ticket Hawk</h1>
 
         <form action="index.php?module=login&action=login_agent" method="post">
-            <input placeholder="Username">
-            <input placeholder="Password">
+            <input placeholder="Username" name="username">
+            <input placeholder="Password" name="password">
 
             <button type="submit" name="login">Login</button>
         </form>

@@ -11,4 +11,8 @@ class LoginService {
     static function login_admin($username, $password) {
         return AuthMapper::admin_valid($username, $password);
     }
+
+    static function login_agent($username, $password) {
+        return AuthMapper::agent_valid($username, $password);
+    }
 }
