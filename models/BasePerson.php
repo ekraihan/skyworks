@@ -9,85 +9,86 @@ include_once "models/Model.php";
 
 abstract class BasePerson extends Model
 {
-    protected $first_name;
-    protected $last_name;
-    protected $password;
-    protected $email;
-    protected $username;
-    protected $role;
+    protected $PersonId;
+    protected $FirstName;
+    protected $LastName;
+    protected $Password;
+    protected $Email;
+    protected $UserName;
+    protected $Role;
 
-    public function __construct($first_name="",
-                                $last_name="",
-                                $password="",
-                                $email="",
-                                $username="",
-                                $role="")
+    public function __construct($FirstName="",
+                                $LastName="",
+                                $Password="",
+                                $Email="",
+                                $UserName="",
+                                $Role="")
     {
-        $this->first_name = $first_name;
-        $this->last_name = $last_name;
-        $this->password = $password;
-        $this->email = $email;
-        $this->username = $username;
-        $this->role = $role;
+        $this->FirstName = $FirstName;
+        $this->LastName = $LastName;
+        $this->Password = $Password;
+        $this->Email = $Email;
+        $this->UserName = $UserName;
+        $this->Role = $Role;
     }
 
     /**
-     * @param string $first_name
+     * @param string $FirstName
      * @return BasePerson
      */
-    public function set_first_name($first_name)
+    public function set_FirstName($FirstName)
     {
-        $this->first_name = $first_name;
+        $this->FirstName = $FirstName;
         return $this;
     }
 
     /**
-     * @param string $last_name
+     * @param string $LastName
      * @return BasePerson
      */
-    public function set_last_lame($last_name)
+    public function set_last_lame($LastName)
     {
-        $this->last_name = $last_name;
+        $this->LastName = $LastName;
         return $this;
     }
 
     /**
-     * @param string $password
+     * @param string $Password
      * @return BasePerson
      */
-    public function set_password($password)
+    public function set_Password($Password)
     {
-        $this->password = $password;
+        $this->Password = $Password;
         return $this;
     }
 
     /**
-     * @param string $email
+     * @param string $Email
      * @return BasePerson
      */
-    public function set_email($email)
+    public function set_Email($Email)
     {
-        $this->email = $email;
+        $this->Email = $Email;
         return $this;
     }
 
     /**
-     * @param string $username
+     * @param string $UserName
      * @return BasePerson
      */
-    public function set_user_name($username)
+    public function set_user_name($UserName)
     {
-        $this->username = $username;
+        $this->UserName = $UserName;
         return $this;
     }
 
     /**
-     * @param string $role
+     * @param string $Role
      * @return BasePerson
      */
-    public function set_role($role)
+    public function set_role($Role)
     {
-        $this->role = $role;
+        $this->Role = $Role;
         return $this;
     }
 }

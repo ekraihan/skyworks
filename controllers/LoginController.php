@@ -7,6 +7,9 @@
 
 include_once "controllers/Controller.php";
 include_once "models/User.php";
+include_once "services/LoginService.php";
+include_once "services/AdminService.php";
+include_once "models/Roles.enum.php";
 
 //session_start();
 
@@ -23,31 +26,28 @@ class LoginController extends Controller {
             //header("Location: index.php?module=ticket");
         }
 
-        $connection = new PDO("mysql:host=localhost;dbname=ekraihan_db", "ekraihan", "77aadd");
-//        foreach($connection->query("Call GET_USERS()") as $row) {
-//            foreach ($row as $row_name => $item){
-//                echo $row_name . ": " . $item . "<br>";
-//            }
-//            echo "<br>";
-//        }
-
-        $stm = $connection->query("SELECT VALIDATE_USER('blah','test21')");
-
-        if ($stm->fetchColumn())
-            print "blah";
-
-        include "views/login.php";
+        include "views/user_login.php";
     }
 
     function login_admin()
     {
-        if (isset($_SESSION['person_type']) && ($_SESSION['person_type'] === Roles::ADMIN || $_SESSION['person_type'] === Roles::SUPER_ADMIN))
-            header("Location: index.php?module=report");
+//        if (isset($_SESSION['person_type']) && ($_SESSION['person_type'] === Roles::ADMIN || $_SESSION['person_type'] === Roles::SUPER_ADMIN))
+//            header("Location: index.php?module=report");
+
+        $user_valid = true;
 
         if (isset($_POST['login']))
         {
-            $_SESSION['person_type'] = Roles::ADMIN;
-            header("Location: index.php?module=report");
+            if (LoginService::login_admin($_POST['username'], $_POST['password'])) {
+                $_SESSION['current_person'] = AdminService::get_admin_by_username($_POST['username']);
+                $_SESSION['current_person']->set_role(Roles::ADMIN);
+                header("Location: index.php?module=report");
+            }
+            else
+            {
+                $user_valid = false;
+            }
+
         }
 
         include "views/admin_login.php";

@@ -15,7 +15,7 @@ class HeaderController extends Controller {
 
      public function logout()
      {
-         unset($_SESSION['person_type']);
+         unset($_SESSION['current_person']);
          header("Location: index.php?module=login");
      }
 }

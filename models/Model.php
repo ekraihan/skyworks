@@ -6,13 +6,6 @@
  */
 
 abstract class Model {
-    protected $id;
-
-    public function set_id($id)
-    {
-        $this->id = $id;
-        return $this;
-    }
 
     public function __get($value)
     {
