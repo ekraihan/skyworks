@@ -9,9 +9,9 @@ include_once "controllers/Controller.php";
 include_once "models/User.php";
 include_once "services/LoginService.php";
 include_once "services/AdminService.php";
-include_once "models/Roles.enum.php";
+include_once "services/AgentService.php";
 
-//session_start();
+include_once "models/Roles.enum.php";
 
 class LoginController extends Controller {
 
@@ -31,7 +31,7 @@ class LoginController extends Controller {
 
     function login_admin()
     {
-//        if (isset($_SESSION['person_type']) && ($_SESSION['person_type'] === Roles::ADMIN || $_SESSION['person_type'] === Roles::SUPER_ADMIN))
+//        if (isset($_SESSION['person_type']) && ($_SESSION['person_type'] === Roles::ADMIN))
 //            header("Location: index.php?module=report");
 
         $user_valid = true;
@@ -40,7 +40,6 @@ class LoginController extends Controller {
         {
             if (LoginService::login_admin($_POST['username'], $_POST['password'])) {
                 $_SESSION['current_person'] = AdminService::get_admin_by_username($_POST['username']);
-                $_SESSION['current_person']->set_role(Roles::ADMIN);
                 header("Location: index.php?module=report");
             }
             else
@@ -57,18 +56,18 @@ class LoginController extends Controller {
 //        if (isset($_SESSION['person_type']) && $_SESSION['person_type'] === Roles::AGENT)
 //            header("Location: index.php?module=ticket");
 
+        $user_valid = true;
+
         if (isset($_POST['login']))
         {
             if (LoginService::login_agent($_POST['username'], $_POST['password'])) {
-                $_SESSION['current_person'] = AdminService::get_admin_by_username($_POST['username']);
-                $_SESSION['current_person']->set_role(Roles::ADMIN);
-                header("Location: index.php?module=report");
+                $_SESSION['current_person'] = AgentService::get_agent_by_username($_POST['username']);
+                header("Location: index.php?module=ticket");
             }
             else
             {
                 $user_valid = false;
             }
-
         }
 
         include "views/agent_login.php";

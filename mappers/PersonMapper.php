@@ -16,14 +16,14 @@ class PersonMapper extends Mapper {
     static function get_admin_by_username($username) {
         $statement = self::get_connection()->prepare(self::$get_admin_by_username);
         $statement->execute(func_get_args());
-        $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Admin');
+        $statement->setFetchMode(PDO::FETCH_CLASS, 'Admin');
         return $statement->fetch();
     }
 
     static function get_agent_by_username($username) {
         $statement = self::get_connection()->prepare(self::$get_agent_by_username);
         $statement->execute(func_get_args());
-        $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Agent');
+        $statement->setFetchMode(PDO::FETCH_CLASS, 'Agent');
         return $statement->fetch();
     }
 }

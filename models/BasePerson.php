@@ -17,20 +17,18 @@ abstract class BasePerson extends Model
     protected $UserName;
     protected $Role;
 
-    public function __construct($FirstName="",
-                                $LastName="",
-                                $Password="",
-                                $Email="",
-                                $UserName="",
-                                $Role="")
-    {
-        $this->FirstName = $FirstName;
-        $this->LastName = $LastName;
-        $this->Password = $Password;
-        $this->Email = $Email;
-        $this->UserName = $UserName;
-        $this->Role = $Role;
-    }
+//    public function __construct($FirstName="",
+//                                $LastName="",
+//                                $Password="",
+//                                $Email="",
+//                                $UserName="")
+//    {
+//        $this->FirstName = $FirstName;
+//        $this->LastName = $LastName;
+//        $this->Password = $Password;
+//        $this->Email = $Email;
+//        $this->UserName = $UserName;
+//    }
 
     /**
      * @param string $FirstName

@@ -7,4 +7,9 @@
 
 class Admin extends BasePerson {
     private $SuperAdmin;
+
+    function __construct()
+    {
+        $this->Role = Roles::ADMIN;
+    }
 }

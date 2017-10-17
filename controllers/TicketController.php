@@ -36,7 +36,11 @@ class TicketController extends RestrictedController
 
     function is_valid_user()
     {
-        return isset($_SESSION['person_type']);
+        return isset($_SESSION['current_person']) &&
+            ($_SESSION['current_person']->Role === Roles::AGENT
+                || $_SESSION['current_person']->Role === Roles::ADMIN
+                || $_SESSION['current_person']->Role === Roles::USER
+            );
     }
 
 }

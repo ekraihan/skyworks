@@ -20,8 +20,12 @@
 <body>
     <div class="login-view">
         <h1>Ticket Hawk</h1>
+        <h3>Agent Login</h3>
 
         <form action="index.php?module=login&action=login_agent" method="post">
+            <?php if (!$user_valid) : ?>
+                <div>Username or Password invalid</div>
+            <?php endif; ?>
             <input placeholder="Username" name="username">
             <input placeholder="Password" name="password">
 

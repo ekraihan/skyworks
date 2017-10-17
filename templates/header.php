@@ -30,7 +30,7 @@
             <a href="index.php?module=ticket"><span>Current Tickets</span></a>
             <?php if ($_SESSION['current_person'] === Roles::USER) : ?>
                 <a href="index.php?module=newticket"><span>Make a Ticket</span></a>
-            <?php elseif ($_SESSION['current_person'] === Roles::ADMIN || $_SESSION['current_person'] === Roles::SUPER_ADMIN) : ?>
+            <?php elseif ($_SESSION['current_person'] === Roles::ADMIN) : ?>
                 <a href="index.php?module=report"><span>Reports</span></a>
                 <a href="index.php?module=edit"><span>Edit Users</span></a>
             <?php endif; ?>

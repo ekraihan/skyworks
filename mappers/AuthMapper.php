@@ -11,7 +11,6 @@ class AuthMapper extends Mapper {
     static private $validate_admin = "SELECT VALIDATE_ADMIN(?,?)";
     static private $validate_agent = "SELECT VALIDATE_AGENT(?,?)";
 
-
     static function admin_valid($username, $password) {
         $statement = self::get_connection()->prepare(self::$validate_admin);
         $statement->execute(func_get_args());

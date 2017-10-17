@@ -7,4 +7,9 @@
 
 class Agent extends BasePerson {
     private $Rating;
+
+    function __construct()
+    {
+        $this->Role = Roles::AGENT;
+    }
 }
