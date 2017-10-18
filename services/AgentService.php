@@ -5,8 +5,30 @@
  * DATE: 10/17/17
  */
 
-class AgentService {
+class AgentService implements BaseService {
     static function get_by_username($username) {
-        return PersonMapper::get_agent_by_username($username);
+        return AgentMapper::get_by_username($username);
+    }
+
+    static function save($agent)
+    {
+        if (isset($agent->PersonId))
+            return AgentMapper::update(
+                $agent->PersonId,
+                $agent->UserName,
+                $agent->FirstName,
+                $agent->LastName,
+                $agent->Email,
+                $agent->Password,
+                $agent->Rating
+            );
+        else
+            return AgentMapper::add(
+                $agent->UserName,
+                $agent->FirstName,
+                $agent->LastName,
+                $agent->Email,
+                $agent->Password
+            );
     }
 }

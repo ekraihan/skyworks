@@ -15,6 +15,9 @@ class HeaderController extends Controller {
 
      public function logout()
      {
+         if (!isset($_SESSION['current_person']))
+             header("Location: index.php?method=login");
+
          $current_role = $_SESSION['current_person']->Role;
          unset($_SESSION['current_person']);
          if ($current_role === Roles::ADMIN)

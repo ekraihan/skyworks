@@ -12,4 +12,9 @@ class Agent extends BasePerson {
     {
         $this->Role = Roles::AGENT;
     }
+
+    function person_valid()
+    {
+        return true;
+    }
 }

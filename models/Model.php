@@ -14,4 +14,14 @@ abstract class Model {
 
         throw new UnexpectedValueException("Property " . $value . " does not exist in class " . get_class($this));
     }
+
+    public function __isset($value)
+    {
+        if (property_exists($this, $value))
+            return isset($this->$value);
+
+        throw new UnexpectedValueException("Property " . $value . " does not exist in class " . get_class($this));
+    }
+
+    abstract public function is_valid();
 }

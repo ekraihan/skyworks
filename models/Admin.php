@@ -6,10 +6,15 @@
  */
 
 class Admin extends BasePerson {
-    private $SuperAdmin;
+    protected $SuperAdmin;
 
     function __construct()
     {
         $this->Role = Roles::ADMIN;
+    }
+
+    function person_valid()
+    {
+        return true;
     }
 }

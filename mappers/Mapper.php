@@ -5,7 +5,7 @@
  * DATE: 10/16/17
  */
 
-class Mapper {
+abstract class Mapper {
     protected static function get_connection() {
         static $connection = null;
 
