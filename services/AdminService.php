@@ -34,4 +34,16 @@ class AdminService implements BaseService {
                 $admin->SuperAdmin
             );
     }
+
+    static public function get_all() {
+        return AdminMapper::get_all();
+    }
+
+    static public function get_by_id($id) {
+        return AdminMapper::get_by_id($id);
+    }
+
+    static public function delete($admin){
+        AdminMapper::delete_by_id($admin->PersonId);
+    }
 }

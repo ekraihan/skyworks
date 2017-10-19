@@ -33,4 +33,16 @@ class UserService implements BaseService {
                 $user->Password
             );
     }
+
+    static public function get_all() {
+        return UserMapper::get_all();
+    }
+
+    static public function get_by_id($id) {
+        return UserMapper::get_by_id($id);
+    }
+
+    static public function delete($user){
+        UserMapper::delete_by_id($user->PersonId);
+    }
 }

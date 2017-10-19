@@ -28,11 +28,11 @@
             <a href="index.php?module=header&action=logout"><span>Logout</span></a>
             <a href="index.php?module=personinfo"><span>User Profile</span></a>
             <a href="index.php?module=ticket"><span>Current Tickets</span></a>
-            <?php if ($_SESSION['current_person'] === Roles::USER) : ?>
+            <?php if ($_SESSION['current_person']->Role === Roles::USER) : ?>
                 <a href="index.php?module=newticket"><span>Make a Ticket</span></a>
-            <?php elseif ($_SESSION['current_person'] === Roles::ADMIN) : ?>
+            <?php elseif ($_SESSION['current_person']->Role === Roles::ADMIN) : ?>
                 <a href="index.php?module=report"><span>Reports</span></a>
-                <a href="index.php?module=edit"><span>Edit Users</span></a>
+                <a href="index.php?module=edit"><span>Edit People</span></a>
             <?php endif; ?>
         <? endif; ?>
     </nav>

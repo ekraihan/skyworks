@@ -18,4 +18,8 @@ class Admin extends BasePerson {
     {
         return true;
     }
+
+    public function set_super_admin($value) {
+        $this->SuperAdmin = (boolean)$value;
+    }
 }

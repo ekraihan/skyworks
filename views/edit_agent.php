@@ -29,20 +29,20 @@
     <div class="users">
         <div class="user-list">
             <?php foreach ($people as $person) : ?>
-                <form action="index.php?module=edit" method="post">
+                <form action="index.php?module=edit&action=view_agents" method="post">
                     <input type="hidden" name="user_id" value="<?php echo $person->PersonId ?>"/>
                     <button type="submit" class="user">
                         <?php echo $person->FirstName.' '.$person->LastName?>
                     </button>
                 </form>
             <?php endforeach; ?>
-            <form method="post" action="index.php?module=edit&action=add_user">
-                <button name="add_usr_btn" type="submit">+ Add User</button>
+            <form method="post" action="index.php?module=edit&action=add_agent">
+                <button name="add_usr_btn" type="submit">+ Add Agent</button>
             </form>
         </div>
         <div class="user-box">
             <?php if ($this->is_adding_user) : ?>
-                <form class="user-info" method="post" action="index.php?module=edit&action=add_user">
+                <form class="user-info" method="post" action="index.php?module=edit&action=add_agent">
                     <?php if (!$username_valid) : ?>
                         <span class='error'>Invalid Field</span>
                     <?php endif; ?>
@@ -87,11 +87,11 @@
                            placeholder="Password"
                            value="<?php echo $new_user->Password ?>"/>
                     <div>
-                        <button type="submit" name="add_user">Save</button>
+                        <button type="submit" name="add_agent">Save</button>
                     </div>
                 </form>
             <?php elseif ($this->current_editing) : ?>
-                <form class="user-info" method="post" action="index.php?module=edit">
+                <form class="user-info" method="post" action="index.php?module=edit&action=view_agents">
                     <div>
                         <span>First Name: </span>
                         <?php if ($this->is_editing) : ?>

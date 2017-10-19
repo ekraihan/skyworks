@@ -33,4 +33,16 @@ class AgentService implements BaseService {
                 $agent->Password
             );
     }
+
+    static public function get_all() {
+        return AgentMapper::get_all();
+    }
+
+    static public function get_by_id($id) {
+        return AgentMapper::get_by_id($id);
+    }
+
+    static public function delete($agent){
+        AgentMapper::delete_by_id($agent->PersonId);
+    }
 }

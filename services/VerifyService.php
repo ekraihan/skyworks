@@ -23,7 +23,8 @@ class VerifyService {
     }
 
     static public function admin_valid($admin) {
-        return self::person_valid($admin);
+        return self::person_valid($admin)
+            && self::super_admin_valid($admin->SuperAdmin);
     }
 
     /**
@@ -72,5 +73,9 @@ class VerifyService {
      */
     static public function username_valid($username) {
         return $username !== "" && AuthMapper::username_valid($username);
+    }
+
+    static public function super_admin_valid($super_admin) {
+        return isset($super_admin);
     }
 }
