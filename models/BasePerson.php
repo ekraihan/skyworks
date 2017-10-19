@@ -92,46 +92,6 @@ abstract class BasePerson extends Model
         return $this;
     }
 
-    /**
-     * first_name_valid
-     *
-     * @return      bool
-     */
-    public function first_name_valid()
-    {
-        return $this->FirstName !== "";
-    }
 
-    /**
-     * last_name_valid
-     *
-     * @return      bool
-     */
-    public function last_name_valid()
-    {
-        return $this->LastName !== "";
-    }
 
-    /**
-     * password_valid
-     *
-     * @return      bool
-     */
-    public function password_valid()
-    {
-        return strlen($this->Password) > 6;
-    }
-
-    /**
-     * email_valid
-     * @return      mixed
-     */
-    public function email_valid()
-    {
-        return filter_var($this->Email, FILTER_VALIDATE_EMAIL);
-    }
-
-    public function username_valid() {
-        return $this->UserName !== "";
-    }
 }

@@ -11,6 +11,7 @@ class User extends BasePerson {
 
     function __construct()
     {
+        parent::__construct();
         $this->Role = Roles::USER;
     }
 

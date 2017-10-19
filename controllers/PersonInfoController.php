@@ -46,7 +46,7 @@ class PersonInfoController extends RestrictedController
             ->set_email($_POST["email"])
             ->set_password($_POST["password"]);
 
-        if ($this->person->is_valid())
+        if (VerifyService::user_valid($this->person))
             $_SESSION['current_person'] = UserService::save($this->person);
         else
             $this->is_editing = true;
@@ -59,7 +59,7 @@ class PersonInfoController extends RestrictedController
             ->set_email($_POST["email"])
             ->set_password($_POST["password"]);
 
-        if ($this->person->is_valid())
+        if (VerifyService::agent_valid($this->person))
             $_SESSION['current_person'] = AgentService::save($this->person);
         else
             $this->is_editing = true;
@@ -72,7 +72,7 @@ class PersonInfoController extends RestrictedController
             ->set_email($_POST["email"])
             ->set_password($_POST["password"]);
 
-        if ($this->person->is_valid())
+        if (VerifyService::admin_valid($this->person))
             $_SESSION['current_person'] = AdminService::save($this->person);
         else
             $this->is_editing = true;
