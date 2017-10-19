@@ -14,7 +14,7 @@
             <input name="first_name"
                    placeholder="First Name"
                    value="<?php echo $this->person->FirstName ?>"/>
-            <?php if (!$this->person->first_name_valid()) : ?>
+            <?php if (!VerifyService::first_name_valid($this->person->FirstName)) : ?>
                 <span>Invalid First Name</span>
             <?php endif; ?>
         <?php else : ?>
@@ -27,7 +27,7 @@
             <input name="last_name"
                    placeholder="Last Name"
                    value="<?php echo $this->person->LastName ?>"/>
-            <?php if (!$this->person->last_name_valid()) : ?>
+            <?php if (!VerifyService::last_name_valid($this->person->LastName)) : ?>
                 <span>Invalid Last Name</span>
             <?php endif; ?>
         <?php else : ?>
@@ -40,7 +40,7 @@
             <input name="email"
                    placeholder="Email"
                    value="<?php echo $this->person->Email ?>"/>
-            <?php if (!$this->person->email_valid()) : ?>
+            <?php if (!VerifyService::email_valid($this->person->Email)) : ?>
                 <span>Invalid Email</span>
             <?php endif; ?>
         <?php else : ?>
@@ -53,7 +53,7 @@
             <input name="password"
                    placeholder="Password"
                    value="<?php echo $this->person->Password ?>"/>
-            <?php if (!$this->person->password_valid()) : ?>
+            <?php if (!VerifyService::password_valid($this->person->Password)) : ?>
                 <span>Invalid Password</span>
             <?php endif; ?>
         <?php else : ?>

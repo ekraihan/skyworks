@@ -11,8 +11,7 @@ class VerifyService {
         return self::first_name_valid($person->FirstName)
             && self::last_name_valid($person->LastName)
             && self::email_valid($person->Email)
-            && self::password_valid($person->Password)
-            && self::username_valid($person->UserName);
+            && self::password_valid($person->Password);
     }
 
     static public function user_valid($user) {

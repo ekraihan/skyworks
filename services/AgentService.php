@@ -5,6 +5,8 @@
  * DATE: 10/17/17
  */
 
+include_once "mappers/AgentMapper.php";
+
 class AgentService implements BaseService {
     static function get_by_username($username) {
         return AgentMapper::get_by_username($username);

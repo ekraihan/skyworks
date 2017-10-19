@@ -34,10 +34,11 @@ class RegisterController extends Controller {
             $password_valid = VerifyService::password_valid($new_user->Password);
             $username_valid = VerifyService::username_valid($new_user->UserName);
 
-            print_r($new_user);
-            if (VerifyService::user_valid($new_user))
+
+            if (VerifyService::user_valid($new_user) && VerifyService::username_valid($new_user->UserName)) {
                 UserService::save($new_user);
                 header("Location: index.php?module=login");
+            }
         }
 
         include "views/register.php";
