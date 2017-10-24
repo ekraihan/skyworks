@@ -5,8 +5,6 @@
      * AUTHOR: Elias Kraihanzel
      * DATE: 9/17/17
      */
-
-//    session_start();
 ?>
 
 
@@ -16,7 +14,11 @@
 <head>
     <title>Skyworks</title>
     <link rel="stylesheet" type="text/css" href="styles/app.css">
-    <script type="text/javascript" src="libraries/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="node_modules/datatables/media/css/jquery.dataTables.css">
+
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="node_modules/datatables/media/js/jquery.dataTables.js"></script>
+
 </head>
 <body>
 <header>

@@ -7,10 +7,12 @@
 
 include_once "controllers/RestrictedController.php";
 include_once "models/Roles.enum.php";
+include_once "mappers/UserMapper.php";
 
 class ReportController extends RestrictedController {
     public function default_action()
     {
+        $users = UserMapper::get_all();
         include "views/reports.php";
     }
 

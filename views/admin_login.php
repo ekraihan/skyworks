@@ -15,7 +15,7 @@
 <head>
     <title>Skyworks</title>
     <link rel="stylesheet" type="text/css" href="styles/app.css">
-    <script type="text/javascript" src="libraries/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
     <div class="login-view">
@@ -26,8 +26,8 @@
             <?php if (!$user_valid) : ?>
                 <div>Username or Password invalid</div>
             <?php endif; ?>
-            <input placeholder="Username" name="username">
-            <input placeholder="Password" name="password">
+            <input placeholder="Username" name="username" value="ekraihan">
+            <input placeholder="Password" name="password" value="test123">
 
             <button type="submit" name="login">Login</button>
         </form>

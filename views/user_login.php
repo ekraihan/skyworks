@@ -14,7 +14,7 @@
 <head>
     <title>Skyworks</title>
     <link rel="stylesheet" type="text/css" href="styles/app.css">
-    <script type="text/javascript" src="libraries/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
 
