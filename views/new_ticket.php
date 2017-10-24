@@ -8,28 +8,29 @@
 ?>
 
 <div class="new-ticket-view">
-    <div>
-        <span>Choose Product: </span>
-        <select>
-            <?php foreach ($products as $id => $product): ?>
-                <option>
-                    <?php echo $product ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-    </div>
+    <form action="index.php?module=newticket&action=save">
+        <div>
+            <span>Choose Product: </span>
+            <select name="product">
+                <?php foreach ($products as $product): ?>
+                    <option>
+                        <?php echo $product->Name ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
 
-    <div>
-        <span>Are you having any of these problems? (Show common or recent problems)</span>
-    </div>
+        <div>
+            <span>Are you having any of these problems? (Show common or recent problems)</span>
+        </div>
 
-    <div>
-        <textarea rows="20" cols="90" placeholder="Type Ticket Info Here"></textarea>
-    </div>
-
-    <div>
-        <button class="submit-ticket">Submit Ticket</button>
-    </div>
+        <div>
+            <textarea rows="20" cols="90" placeholder="Type Ticket Info Here" name="text"></textarea>
+        </div>
+        <div>
+            <button class="submit-ticket" type="submit" name="submit"> Submit Ticket</button>
+        </div>
+    </form>
 
     <div class="possible-answers"></div>
 

@@ -1,13 +1,17 @@
 ## TicketHawk
 
 ### User login: http://corsair.cs.iupui.edu:21191/skyworks.com
+Username: test_user Password: test123
+
 ### Agent Login: http://corsair.cs.iupui.edu:21191/skyworks.com/agent_login
+Username: test_agent Password: test123
+
 ### Agent Login: http://corsair.cs.iupui.edu:21191/skyworks.com/admin_login
-None of the login screens require any input to login. Just press the `Login` button to login
+Username: ekraihan Password: test123
 
-There is currently full form validation for the registration page only
+There is full validation for registration and user editing
 
-None of the tables in the database are created yet
+All of the tables in the database are created
 
 This application uses an MVC design. Navigating to the index page with certain parameters
 in the url will load up the appropriate controller which will load up the appropriate model and view

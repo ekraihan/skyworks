@@ -7,17 +7,20 @@
 
 include_once "controllers/RestrictedController.php";
 include_once "models/MockStore.php";
+include_once "services/ProductService.php";
+include_once "models/Product.php";
 
 class NewTicketController extends RestrictedController
 {
     function default_action()
     {
-        $products = MockStore::get_all_by_type('products');
+        $products = ProductService::get_all();
+
         include "views/new_ticket.php";
     }
 
     function is_valid_user()
     {
-        return isset($_SESSION['person_type']);
+        return isset($_SESSION['current_person']);
     }
 }
