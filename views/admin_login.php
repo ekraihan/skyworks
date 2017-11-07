@@ -26,8 +26,8 @@
             <?php if (!$user_valid) : ?>
                 <div>Username or Password invalid</div>
             <?php endif; ?>
-            <input placeholder="Username" name="username">
-            <input placeholder="Password" name="password">
+            <input placeholder="Username" name="username" value="ekraihan">
+            <input placeholder="Password" name="password" value="test123">
 
             <button type="submit" name="login">Login</button>
         </form>

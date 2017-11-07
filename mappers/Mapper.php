@@ -14,4 +14,10 @@ abstract class Mapper {
 
         return $connection;
     }
+
+    protected static function execute($sql, $args) {
+        $statement = self::get_connection()->prepare($sql);
+        $statement->execute($args);
+        return $statement;
+    }
 }

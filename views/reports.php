@@ -14,6 +14,17 @@
             "order": [[ 0, "asc" ]],
             "scrollY":        "200px"
         })
+    });
+
+    $(document).ready(function ()
+    {
+//        var data = <?php //print $data ?>
+//        var labels = <?php //print $labels ?>
+//        console.log(data,labels);
+        var pie = new RGraph.Pie('pie-chart', <?php print $data ?>)
+            .set('exploded', [15])
+            .set('labels', <?php print $labels ?>)
+            .draw();
     })
 </script>
 
@@ -53,5 +64,7 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+
+<canvas id="pie-chart" width="400" height="300">[No canvas support]</canvas>
 
 
