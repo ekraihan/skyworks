@@ -6,18 +6,28 @@
  */
 
 abstract class Mapper {
+
     protected static function get_connection() {
         static $connection = null;
 
         if ($connection === null)
-            return new PDO("mysql:host=localhost;dbname=ekraihan_db", "ekraihan", "77aadd");
+            $connection = new PDO("mysql:host=localhost;dbname=ekraihan_db", "ekraihan", "77aadd");
 
         return $connection;
     }
 
-    protected static function execute($sql, $args) {
+    protected final static function execute($sql, $args = array()) {
+        static $statement = null;
+
+        if ($statement !== null)
+            $statement->closeCursor();
+
         $statement = self::get_connection()->prepare($sql);
         $statement->execute($args);
         return $statement;
+    }
+
+    protected final static function finish_execute() {
+
     }
 }
