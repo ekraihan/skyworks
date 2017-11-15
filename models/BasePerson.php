@@ -19,16 +19,6 @@ abstract class BasePerson extends Model
     protected $Email;
     protected $UserName;
 
-    public function is_valid()
-    {
-        return $this->password_valid()
-            && $this->first_name_valid()
-            && $this->last_name_valid()
-            && $this->email_valid()
-            && $this->username_valid()
-            && $this->person_valid();
-    }
-
     public function __construct($FirstName="",
                                 $LastName="",
                                 $Password="",

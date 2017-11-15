@@ -26,8 +26,4 @@ abstract class Mapper {
         $statement->execute($args);
         return $statement;
     }
-
-    protected final static function finish_execute() {
-
-    }
 }

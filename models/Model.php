@@ -5,7 +5,8 @@
  * DATE: 9/18/17
  */
 
-abstract class Model {
+abstract class Model
+{
 
     public function __get($value)
     {
@@ -22,6 +23,4 @@ abstract class Model {
 
         throw new UnexpectedValueException("Property " . $value . " does not exist in class " . get_class($this));
     }
-
-    abstract public function is_valid();
 }
