@@ -8,12 +8,22 @@ include_once "mappers/ProductMapper.php";
 
 class ProductService implements BaseService {
 
-    static function save($model)
+    static function save($ticket)
     {
 
     }
 
     static function get_all() {
         return ProductMapper::get_all();
+    }
+
+    static function get_by_id($id)
+    {
+        // TODO: Implement get_by_id() method.
+    }
+
+    static function delete($model)
+    {
+        // TODO: Implement delete() method.
     }
 }

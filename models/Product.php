@@ -9,7 +9,7 @@ include_once "models/Model.php";
 
 class Product extends Model {
 
-    protected $ProuctId;
+    protected $ProductId;
     protected $Name;
     protected $Size;
     protected $Version;

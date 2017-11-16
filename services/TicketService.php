@@ -6,11 +6,34 @@
  */
 
 include_once "mappers/TicketMapper.php";
+include_once "services/BaseService.php";
 
 class TicketService implements BaseService {
-    static function save($model)
+    static function save($ticket)
     {
-        // TODO: Implement save() method.
+        if (isset($ticket->TicketId))
+        {
+            echo "trying to edit a ticket";
+        }
+        else
+        {
+            return TicketMapper::add($ticket);
+        }
+    }
+
+    static function get_all()
+    {
+        // TODO: Impqlement get_all() method.
+    }
+
+    static function get_by_id($id)
+    {
+        return TicketMapper::get_by_id($id);
+    }
+
+    static function delete($model)
+    {
+        // TODO: Implement delete() method.
     }
 
     static function get_num_open_tickets_grouped_by_product() {
