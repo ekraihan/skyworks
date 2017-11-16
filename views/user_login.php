@@ -31,6 +31,7 @@
             <button type="submit" name="login">Login</button>
 
             <span><a href="index.php?module=register">Register</a></span>
+            <span><a href="index.php?module=forgotpassword">Forgot Password?</a></span>
         </form>
     </div>
 </body>
