@@ -42,6 +42,10 @@ class UserService implements BaseService {
         return UserMapper::get_by_id($id);
     }
 
+    static public function get_by_email($email) {
+        return UserMapper::get_by_email($email);
+    }
+
     static public function delete($user){
         UserMapper::delete_by_id($user->PersonId);
     }

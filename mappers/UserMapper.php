@@ -23,6 +23,13 @@ class UserMapper extends Mapper {
         return $statement->fetch();
     }
 
+    static function get_by_email($email) {
+        $get_user_by_email = "Call GET_USER_BY_EMAIL(?)";
+        $statement = self::execute($get_user_by_email, func_get_args());
+        $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');
+        return $statement->fetch();
+    }
+
     static function get_by_id($id) {
         $statement = self::get_connection()->prepare(self::$get_user_by_id);
         $statement->execute(func_get_args());
