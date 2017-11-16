@@ -21,11 +21,7 @@
             <button>Users</button>
         </a>
     </div>
-    <div class="filter">
-        <div><span>Search</span>
-            <input placeholder="Person Name">
-        </div>
-    </div>
+    <div class="filter"></div>
     <div class="users">
         <div class="user-list">
             <?php foreach ($people as $person) : ?>

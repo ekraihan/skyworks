@@ -1,5 +1,9 @@
 ## TicketHawk
 
+In the latest iteration of Ticket Hawk, I added the ability for users to create tickets. Users and agents
+can also view their tickets and respond to tickets. I also added rudimentary user report to the admin's
+report page.
+
 ### User login: http://corsair.cs.iupui.edu:21191/skyworks.com
 Username: test_user Password: test123
 
