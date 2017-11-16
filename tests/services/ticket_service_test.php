@@ -18,6 +18,18 @@ function test_save() {
     $ticket->set_product_id(1)
         ->set_user_id(3);
 
+    $ticket = TicketService::save($ticket);
+    print_r($ticket);
+
+    $message = new Message();
+    $message->set_user_id($ticket->UserId)
+        ->set_agent_id($ticket->AgentId)
+        ->set_ticket_id($ticket->TicketId)
+        ->set_message("I'm Here to asssist with blah")
+        ->set_is_agent_reply(true);
+
+    MessageService::save($message);
+
     echo "<br><br>";
 }
 

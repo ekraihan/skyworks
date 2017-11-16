@@ -5,6 +5,8 @@
  * DATE: 11/15/17
  */
 
+include_once "models/Model.php";
+
 class Message extends Model {
     protected $MessageId;
     protected $AgentId;

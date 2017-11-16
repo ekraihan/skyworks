@@ -4,6 +4,8 @@
  * AUTHOR: Elias Kraihanzel
  * DATE: 11/15/17
  */
+include_once "mappers/Mapper.php";
+include_once "mappers/ModelMapper.php";
 
 class MessageMapper extends Mapper implements ModelMapper {
     private static $add_message = "CALL ADD_MESSAGE(?,?,?,?,?)";

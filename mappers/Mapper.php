@@ -9,6 +9,8 @@ abstract class Mapper {
 
     static protected $global_var = "@global_var";
 
+    private static $statement;
+
     protected static function get_connection() {
         static $connection = null;
 
@@ -18,15 +20,13 @@ abstract class Mapper {
         return $connection;
     }
 
-    protected final static function execute($sql, $args = array()) {
-        static $statement = null;
+    protected static function execute($sql, $args = array()) {
+        if(isset(self::$statement))
+            self::$statement->closeCursor();
 
-        if ($statement !== null)
-            $statement->closeCursor();
-
-        $statement = self::get_connection()->prepare($sql);
-        $statement->execute($args);
-        return $statement;
+        self::$statement = self::get_connection()->prepare($sql);
+        self::$statement->execute($args);
+        return self::$statement;
     }
 
     protected final static function get_global_variable() {
