@@ -29,18 +29,17 @@
         </div>
         <div class="ticket-box">
             <?php if (isset($current_ticket)) : ?>
-                <div class="message-string">
-                    <?php foreach ($current_messages as $message) : ?>
-                        <div class="message"><?php echo $message->Message?></div>
-                    <?php endforeach; ?>
-                    <div class="reply-body"></div>
-                    <div class="reply">
-                        <button class="reply-btn">Reply</button>
-                    </div>
-                </div>
+                <form class="message-string" method="post" action="index.php?module=ticket&ticket_id=<?php echo $current_ticket->TicketId; ?>">
+                        <?php foreach ($current_messages as $message) : ?>
+                            <div class="message"><?php echo $message->Message?></div>
+                        <?php endforeach; ?>
+                        <div class="reply-body"></div>
+                        <div class="reply">
+                            <button class="reply-btn" type="button">Reply</button>
+                        </div>
+                </form>
 
-
-                <form class="ticket-info" method="post" action="index.php?module=ticket&ticket_id=<?php echo $id; ?>">
+                <form class="ticket-info" method="post" action="index.php?module=ticket&ticket_id=<?php echo $current_ticket->TicketId; ?>">
                     <span><b>Ticket Info</b></span>
                     <div>
                         <span>Current Status:</span>

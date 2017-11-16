@@ -39,4 +39,11 @@ function test_get_all_by_ticket_id() {
     }
 }
 
-test_get_all_by_ticket_id();
+function test_send_message() {
+    echo "Test Send Message <br><br>";
+    MessageService::send_message("I can assist you man", 108);
+
+}
+
+//test_get_all_by_ticket_id();
+test_send_message();
