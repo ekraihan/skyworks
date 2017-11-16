@@ -14,11 +14,6 @@ class Product extends Model {
     protected $Size;
     protected $Version;
 
-    public function is_valid()
-    {
-        return true;
-    }
-
     /**
      * @param mixed $Name
      * @return Product

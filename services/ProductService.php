@@ -5,6 +5,7 @@
  * DATE: 10/19/17
  */
 include_once "mappers/ProductMapper.php";
+include_once "services/BaseService.php";
 
 class ProductService implements BaseService {
 
