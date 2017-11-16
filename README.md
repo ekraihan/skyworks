@@ -5,13 +5,13 @@ can also view their tickets and respond to tickets. I also added rudimentary use
 report page.
 
 ### User login: http://corsair.cs.iupui.edu:21191/skyworks.com
-Username: test_user Password: test123
+Username: elias Password: test123
 
 ### Agent Login: http://corsair.cs.iupui.edu:21191/skyworks.com/agent_login
-Username: test_agent Password: test123
-
-### Agent Login: http://corsair.cs.iupui.edu:21191/skyworks.com/admin_login
 Username: ekraihan Password: test123
+
+### Admin Login: http://corsair.cs.iupui.edu:21191/skyworks.com/admin_login
+Username: theadmin Password: test123
 
 There is full validation for registration and user editing
 
