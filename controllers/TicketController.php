@@ -7,6 +7,7 @@
 
 include_once "controllers/RestrictedController.php";
 include_once "services/TicketService.php";
+include_once "services/StatusService.php";
 include_once "models/MockStore.php";
 
 class TicketController extends RestrictedController
@@ -17,13 +18,16 @@ class TicketController extends RestrictedController
         $is_editing = isset($_POST['edit-btn']);
 
         $tickets = TicketService::get_all();
-        $filter_options = MockStore::get_all_by_type('filter_options');
-        $statuses = MockStore::get_all_by_type('statuses');
+        $statuses = StatusService::get_all();
 
         $current_ticket = null;
 
         if (isset($_GET['ticket_id']))
+        {
             $current_ticket = TicketService::get_by_id($_GET['ticket_id']);
+            $current_messages = MessageService::get_all_by_ticket_id($current_ticket->TicketId);
+        }
+
 
         include "views/tickets.php";
     }

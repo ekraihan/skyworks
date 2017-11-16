@@ -31,4 +31,12 @@ function test_add() {
     MessageService::save($message);
 }
 
-test_add();
+function test_get_all_by_ticket_id() {
+    echo "Testing Get ALl by ticket id<br><br>";
+    foreach(MessageService::get_all_by_ticket_id(104) as $message) {
+        print_r($message);
+        echo  "<br><br>";
+    }
+}
+
+test_get_all_by_ticket_id();

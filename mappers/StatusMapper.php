@@ -26,7 +26,7 @@ class StatusMapper extends Mapper implements ModelMapper {
         $get_by_id = "CALL GET_STATUS_BY_ID(?)";
         $statement = self::execute($get_by_id, func_get_args());
         $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Status');
-        return $statement->fetchAll();
+        return $statement->fetch();
     }
 
     static function delete($id)

@@ -6,6 +6,7 @@
  */
 include_once "mappers/Mapper.php";
 include_once "mappers/ModelMapper.php";
+include_once "models/Message.php";
 
 class MessageMapper extends Mapper implements ModelMapper {
     private static $add_message = "CALL ADD_MESSAGE(?,?,?,?,?)";
@@ -23,6 +24,13 @@ class MessageMapper extends Mapper implements ModelMapper {
     static function get_by_id($id)
     {
         // TODO: Implement get_by_id() method.
+    }
+
+    static function get_all_by_ticket_id($id) {
+        $get_by_ticket_id = "CALL GET_MESSAGES_BY_TICKET_ID(?)";
+        $statement = self::execute($get_by_ticket_id, func_get_args());
+        $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Message');
+        return $statement->fetchAll();
     }
 
     static function delete($id)

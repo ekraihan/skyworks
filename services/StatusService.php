@@ -12,7 +12,7 @@ class StatusService implements BaseService {
 
     static function get_all()
     {
-        // TODO: Implement get_all() method.
+        return array(array("Name" => "Assigned"));
     }
 
     static function get_by_id($id)

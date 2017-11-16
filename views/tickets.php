@@ -8,34 +8,30 @@
 ?>
 
 <div class="ticket-view">
-    <div class="filter">
-        <div><span>Search</span>
-            <input placeholder="Ticket Name or Content">
-        </div>
-
-        <div><span>Filter By Status</span>
-            <select>
-                <?php foreach ($filter_options as $id => $filter_option): ?>
-                    <option>
-                        <?php echo $filter_option ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
-        </div>
-    </div>
     <div class="tickets">
         <div class="ticket-list">
-            <?php foreach ($tickets as $id => $ticket) : ?>
-                <a href="index.php?module=ticket&ticket_id=<?php echo $id; ?>" class="ticket">
-                    <span><?php echo $ticket->ProductId?></span>
+            <?php foreach ($tickets as $ticket) : ?>
+                <a href="index.php?module=ticket&ticket_id=<?php echo $ticket->TicketId; ?>" class="ticket">
+                    <div>Product: <?php echo ProductService::get_by_id($ticket->ProductId)->Name?></div>
+                    <div>Status: <?php echo StatusService::get_by_id($ticket->StatusId)->Name?></div>
+                    <div>Agent: <?php $agent = AgentService::get_by_id($ticket->AgentId);
+                                    echo $agent->FirstName . " " . $agent->LastName
+                                ?>
+                    </div>
+                    <div>
+                        <?php $messages = MessageService::get_all_by_ticket_id($ticket->TicketId);
+                            if (count($messages) !== 0)
+                                echo substr($messages[0]->Message,0, 25) . "...";
+                        ?>
+                    </div>
                 </a>
             <?php endforeach; ?>
         </div>
         <div class="ticket-box">
             <?php if (isset($current_ticket)) : ?>
                 <div class="message-string">
-                    <?php foreach ($current_ticket['messages'] as $id => $message) : ?>
-                        <div class="message"><?php echo $message?></div>
+                    <?php foreach ($current_messages as $message) : ?>
+                        <div class="message"><?php echo $message->Message?></div>
                     <?php endforeach; ?>
                     <div class="reply-body"></div>
                     <div class="reply">
@@ -50,40 +46,34 @@
                         <span>Current Status:</span>
                         <?php if ($is_editing) : ?>
                             <select>
-                                <?php foreach ($statuses as $id => $status): ?>
+                                <?php foreach ($statuses as $status): ?>
                                     <option>
                                         <?php echo $status ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
                         <?php else : ?>
-                            <?php echo $current_ticket['status'] ?>
+                            <?php echo StatusService::get_by_id($current_ticket->StatusId)->Name ?>
                         <?php endif; ?>
                     </div>
 
                     <div>
                         <?php if ($is_editing) : ?>
                             <button class="edit-user" name="save-btn" type="submit">Save</button>
-                        <?php else : ?>
+                        <?php elseif ($_SESSION['current_person']->Role === Roles::ADMIN || $_SESSION['current_person']->Role === Roles::AGENT): ?>
                             <button class="edit-user" name="edit-btn" type="submit">Edit</button>
                         <?php endif; ?>
                     </div>
 
-                    <div>
-                        <button class="edit-user" name="delete-btn" type="submit">Delete Ticket</button>
-                    </div>
+                    <?php if ($_SESSION['current_person']->Role === Roles::ADMIN) : ?>
+                        <div>
+                            <button class="edit-user" name="delete-btn" type="submit">Delete Ticket</button>
+                        </div>
+                    <?php endif; ?>
                 </form>
             <?php endif; ?>
         </div>
     </div>
 </div>
-
-<select style="display: none" class="statuses">
-    <?php foreach ($filter_options as $id => $filter_option): ?>
-        <option>
-            <?php echo $filter_option ?>
-        </option>
-    <?php endforeach; ?>
-</select>
 
 <script type="text/javascript" src="javascript/ticket.js"></script>
