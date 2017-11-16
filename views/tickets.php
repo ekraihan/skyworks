@@ -27,7 +27,7 @@
         <div class="ticket-list">
             <?php foreach ($tickets as $id => $ticket) : ?>
                 <a href="index.php?module=ticket&ticket_id=<?php echo $id; ?>" class="ticket">
-                    <span><?php echo $ticket['name']?></span>
+                    <span><?php echo $ticket->ProductId?></span>
                 </a>
             <?php endforeach; ?>
         </div>

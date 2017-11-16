@@ -20,7 +20,7 @@ class ProductService implements BaseService {
 
     static function get_by_id($id)
     {
-        // TODO: Implement get_by_id() method.
+        return ProductMapper::get_by_id($id);
     }
 
     static function delete($model)

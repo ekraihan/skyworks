@@ -14,6 +14,7 @@ include_once "controllers/HeaderController.php";
 include_once "controllers/PersonInfoController.php";
 include_once "controllers/ReportController.php";
 include_once "controllers/EditController.php";
+include_once "controllers/TestController.php";
 include_once "models/Roles.enum.php";
 
 session_start();
