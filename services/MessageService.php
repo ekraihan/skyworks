@@ -27,6 +27,9 @@ class MessageService implements BaseService {
         }
     }
 
+    static function get_all_by_ticket_id($id) {
+        return MessageMapper::get_all_by_ticket_id($id);
+    }
     static function get_all()
     {
         // TODO: Implement get_all() method.

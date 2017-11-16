@@ -40,6 +40,15 @@ function test_get_by_id() {
     echo "<br><br>";
 }
 
+function test_get_all() {
+    echo "Test Get All <br><br>";
+    foreach(TicketService::get_all() as $ticket) {
+        print_r($ticket);
+        echo  "<br><br>";
+    }
+}
 
-test_save();
-test_get_by_id();
+
+//test_save();
+//test_get_by_id();
+test_get_all();

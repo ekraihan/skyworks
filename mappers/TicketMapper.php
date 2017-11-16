@@ -33,7 +33,26 @@ class TicketMapper extends Mapper implements ModelMapper {
 
     static function get_all()
     {
-        // TODO: Implement get_all() method.
+        $get_all_tickets = "CALL GET_ALL_TICKETS()";
+        $statement = self::execute($get_all_tickets);
+        $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Ticket');
+        return $statement->fetchAll();
+    }
+
+    static function get_all_by_user_id($id)
+    {
+        $get_tickets_by_user_id = "CALL GET_TICKETS_BY_USER_ID(?)";
+        $statement = self::execute($get_tickets_by_user_id, func_get_args());
+        $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Ticket');
+        return $statement->fetchAll();
+    }
+
+    static function get_all_by_agent_id($id)
+    {
+        $get_tickets_by_agent_id = "CALL GET_TICKETS_BY_AGENT_ID(?)";
+        $statement = self::execute($get_tickets_by_agent_id, func_get_args());
+        $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Ticket');
+        return $statement->fetchAll();
     }
 
     static function get_by_id($id)

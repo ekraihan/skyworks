@@ -23,7 +23,12 @@ class TicketService implements BaseService {
 
     static function get_all()
     {
-        // TODO: Impqlement get_all() method.
+        if ($_SESSION['current_person']->Role === Roles::USER)
+            return TicketMapper::get_all_by_user_id($_SESSION['current_person']->PersonId);
+        else if ($_SESSION['current_person']->Role === Roles::AGENT)
+            return TicketMapper::get_all_by_agent_id($_SESSION['current_person']->PersonId);
+        else if ($_SESSION['current_person']->Role === Roles::ADMIN)
+            return TicketMapper::get_all();
     }
 
     static function get_by_id($id)
