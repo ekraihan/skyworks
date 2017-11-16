@@ -17,7 +17,7 @@ class TicketService implements BaseService {
         }
         else
         {
-            TicketMapper::add($ticket);
+            return TicketMapper::add($ticket);
         }
     }
 
@@ -28,7 +28,7 @@ class TicketService implements BaseService {
 
     static function get_by_id($id)
     {
-        // TODO: Implement get_by_id() method.
+        return TicketMapper::get_by_id($id);
     }
 
     static function delete($model)

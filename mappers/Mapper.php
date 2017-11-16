@@ -7,6 +7,8 @@
 
 abstract class Mapper {
 
+    static protected $global_var = "@global_var";
+
     protected static function get_connection() {
         static $connection = null;
 
@@ -25,5 +27,12 @@ abstract class Mapper {
         $statement = self::get_connection()->prepare($sql);
         $statement->execute($args);
         return $statement;
+    }
+
+    protected final static function get_global_variable() {
+        return self::get_connection()
+            ->query("SELECT " . self::$global_var . " as id")
+            ->fetch(PDO::FETCH_OBJ)
+            ->id;
     }
 }
