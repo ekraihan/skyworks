@@ -19,7 +19,6 @@ function test_add() {
         ->set_message("HELP MEEEEE")
         ->set_is_agent_reply(false);
 
-    print_r($message);
     MessageService::save($message);
 
     $message = new Message();
