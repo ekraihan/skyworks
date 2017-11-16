@@ -8,6 +8,7 @@
 include_once "controllers/RestrictedController.php";
 include_once "services/TicketService.php";
 include_once "services/StatusService.php";
+include_once "services/MessageService.php";
 include_once "models/MockStore.php";
 
 class TicketController extends RestrictedController
@@ -28,6 +29,15 @@ class TicketController extends RestrictedController
             $current_messages = MessageService::get_all_by_ticket_id($current_ticket->TicketId);
         }
 
+        if (isset($_POST['save-message']))
+        {
+            if ($_POST['new-message'] !== "")
+            {
+               MessageService::send_message($_POST['new-message'], $_GET['ticket_id']);
+               $current_messages = MessageService::get_all_by_ticket_id($current_ticket->TicketId);
+               header("Location: index.php?module=ticket&ticket_id=" . $current_ticket->TicketId);
+            }
+        }
 
         include "views/tickets.php";
     }
