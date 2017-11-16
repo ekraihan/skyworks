@@ -12,7 +12,6 @@ function test_save() {
     $ticket = new Ticket();
     $ticket->set_product_id(1)
         ->set_user_id(3);
-    print_r($ticket);
     TicketService::save($ticket);
 }
 
