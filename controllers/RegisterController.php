@@ -20,6 +20,7 @@ class RegisterController extends Controller {
         $email_valid = true;
         $password_valid = true;
         $username_valid = true;
+        $username_taken = false;
 
         if (isset($_POST['register'])) {
             $new_user->set_first_name(htmlspecialchars(trim($_POST["first_name"])))
@@ -33,9 +34,10 @@ class RegisterController extends Controller {
             $email_valid = VerifyService::email_valid($new_user->Email);
             $password_valid = VerifyService::password_valid($new_user->Password);
             $username_valid = VerifyService::username_valid($new_user->UserName);
+            $username_taken = VerifyService::username_taken($new_user->UserName);
 
 
-            if (VerifyService::user_valid($new_user) && VerifyService::username_valid($new_user->UserName)) {
+            if (VerifyService::user_valid($new_user)) {
                 UserService::save($new_user);
                 header("Location: index.php?module=login");
             }

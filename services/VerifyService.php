@@ -11,7 +11,9 @@ class VerifyService {
         return self::first_name_valid($person->FirstName)
             && self::last_name_valid($person->LastName)
             && self::email_valid($person->Email)
-            && self::password_valid($person->Password);
+            && self::password_valid($person->Password)
+            && !self::username_taken($person->UserName)
+            && self::username_valid($person->UserName);
     }
 
     static public function user_valid($user) {
@@ -67,12 +69,21 @@ class VerifyService {
     }
 
     /**
+     * username_taken
+     *
+     * @return      bool
+     */
+    static public function username_taken($username) {
+        return !AuthMapper::username_valid($username);
+    }
+
+    /**
      * username_valid
      *
      * @return      bool
      */
     static public function username_valid($username) {
-        return $username !== "" && AuthMapper::username_valid($username);
+        return $username !== "";
     }
 
     static public function super_admin_valid($super_admin) {

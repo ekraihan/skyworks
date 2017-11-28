@@ -12,6 +12,8 @@ include_once "services/VerifyService.php";
     <form action="index.php?module=register" method="post">
         <?php if (!$username_valid) : ?>
             <span class='error'>Invalid Field</span>
+        <?php elseif ($username_taken) :?>
+            <span class='error'>Username Already Taken</span>
         <?php endif; ?>
         <input maxlength="50"
                name="username"

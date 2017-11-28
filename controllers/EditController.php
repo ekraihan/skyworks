@@ -131,6 +131,7 @@ class EditController extends RestrictedController {
         $email_valid = true;
         $password_valid = true;
         $username_valid = true;
+        $username_taken = false;
 
         if (isset($_POST['add_admin'])) {
             $new_user->set_first_name(htmlspecialchars(trim($_POST["first_name"])))
@@ -145,6 +146,7 @@ class EditController extends RestrictedController {
             $email_valid = VerifyService::email_valid($new_user->Email);
             $password_valid = VerifyService::password_valid($new_user->Password);
             $username_valid = VerifyService::username_valid($new_user->UserName);
+            $username_taken = VerifyService::username_taken($new_user->UserName);
 
 
             if (VerifyService::admin_valid($new_user) && VerifyService::username_valid($new_user->UserName)) {
@@ -169,6 +171,7 @@ class EditController extends RestrictedController {
         $email_valid = true;
         $password_valid = true;
         $username_valid = true;
+        $username_taken = false;
 
         if (isset($_POST['add_agent'])) {
             $new_user->set_first_name(htmlspecialchars(trim($_POST["first_name"])))
@@ -182,7 +185,7 @@ class EditController extends RestrictedController {
             $email_valid = VerifyService::email_valid($new_user->Email);
             $password_valid = VerifyService::password_valid($new_user->Password);
             $username_valid = VerifyService::username_valid($new_user->UserName);
-
+            $username_taken = VerifyService::username_taken($new_user->UserName);
 
             if (VerifyService::agent_valid($new_user) && VerifyService::username_valid($new_user->UserName)) {
                 $this->current_editing = $_SESSION['currently_editing_agent'] = AgentService::save($new_user);
@@ -206,6 +209,7 @@ class EditController extends RestrictedController {
         $email_valid = true;
         $password_valid = true;
         $username_valid = true;
+        $username_taken = false;
 
         if (isset($_POST['add_user'])) {
             $new_user->set_first_name(htmlspecialchars(trim($_POST["first_name"])))
@@ -219,6 +223,7 @@ class EditController extends RestrictedController {
             $email_valid = VerifyService::email_valid($new_user->Email);
             $password_valid = VerifyService::password_valid($new_user->Password);
             $username_valid = VerifyService::username_valid($new_user->UserName);
+            $username_taken = VerifyService::username_taken($new_user->UserName);
 
 
             if (VerifyService::user_valid($new_user) && VerifyService::username_valid($new_user->UserName)) {
