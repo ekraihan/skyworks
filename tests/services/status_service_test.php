@@ -15,4 +15,11 @@ function test_get_by_id() {
     echo "<br><br>";
 }
 
-test_get_by_id();
+function test_get_all() {
+    echo "Testing Get All <br><br>";
+    print_r(StatusService::get_all());
+    echo "<br><br>";
+}
+
+//test_get_by_id();
+test_get_all();

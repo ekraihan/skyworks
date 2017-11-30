@@ -12,7 +12,7 @@ class StatusService implements BaseService {
 
     static function get_all()
     {
-        return array(array("Name" => "Assigned"));
+        return StatusMapper::get_all();
     }
 
     static function get_by_id($id)

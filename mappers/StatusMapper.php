@@ -18,7 +18,10 @@ class StatusMapper extends Mapper implements ModelMapper {
 
     static function get_all()
     {
-        // TODO: Implement get_all() method.
+        $get_all= "CALL GET_ALL_STATUSES()";
+        $statement = self::execute($get_all, func_get_args());
+        $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Status');
+        return $statement->fetchAll();
     }
 
     static function get_by_id($id)
