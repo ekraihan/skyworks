@@ -26,9 +26,11 @@ class TicketMapper extends Mapper implements ModelMapper {
         return self::get_by_id($ticket_id);
     }
 
-    static function update($model)
+    static function update($ticket)
     {
-        // TODO: Implement update() method.
+        $update_ticket = "CALL UPDATE_TICKET(?,?,?)";
+        self::execute($update_ticket, array($ticket->TicketId, $ticket->StatusId, $ticket->Rating));
+        return self::get_by_id($ticket->TicketId);
     }
 
     static function get_all()

@@ -13,7 +13,7 @@ class TicketService implements BaseService {
     {
         if (isset($ticket->TicketId))
         {
-            echo "trying to edit a ticket";
+            return TicketMapper::update($ticket);
         }
         else
         {

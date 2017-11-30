@@ -39,4 +39,24 @@ class Ticket extends Model {
         return $this;
     }
 
+    /**
+     * @param mixed $StatusId
+     * @return Ticket
+     */
+    public function set_status($StatusId)
+    {
+        $this->StatusId = $StatusId;
+        return $this;
+    }
+
+    /**
+     * @param mixed $Rating
+     * @return Ticket
+     */
+    public function set_rating($Rating)
+    {
+        $this->Rating = $Rating;
+        return $this;
+    }
+
 }
