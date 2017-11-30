@@ -50,8 +50,7 @@ class AgentMapper extends Mapper {
     }
 
     static function delete_by_id($id) {
-        $statement = self::get_connection()->prepare(self::$delete_by_id);
-        $statement->execute(func_get_args());
+        self::execute(self::$delete_by_id, func_get_args());
     }
 
     static function update_agent_rating($agentId, $incoming_rating) {
