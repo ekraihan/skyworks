@@ -149,7 +149,9 @@ class EditController extends RestrictedController {
             $username_taken = VerifyService::username_taken($new_user->UserName);
 
 
-            if (VerifyService::admin_valid($new_user) && VerifyService::username_valid($new_user->UserName)) {
+            if (VerifyService::admin_valid($new_user)
+                && !VerifyService::username_taken($new_user->UserName)
+                && VerifyService::username_valid($new_user->UserName)) {
                 $this->current_editing = $_SESSION['currently_editing_admin'] = AdminService::save($new_user);
                 header("Location: index.php?module=edit&action=view_admins");
             }
@@ -187,7 +189,9 @@ class EditController extends RestrictedController {
             $username_valid = VerifyService::username_valid($new_user->UserName);
             $username_taken = VerifyService::username_taken($new_user->UserName);
 
-            if (VerifyService::agent_valid($new_user) && VerifyService::username_valid($new_user->UserName)) {
+            if (VerifyService::agent_valid($new_user)
+                && !VerifyService::username_taken($new_user->UserName)
+                && VerifyService::username_valid($new_user->UserName)) {
                 $this->current_editing = $_SESSION['currently_editing_agent'] = AgentService::save($new_user);
                 header("Location: index.php?module=edit&action=view_agents");
             }
@@ -226,7 +230,9 @@ class EditController extends RestrictedController {
             $username_taken = VerifyService::username_taken($new_user->UserName);
 
 
-            if (VerifyService::user_valid($new_user) && VerifyService::username_valid($new_user->UserName)) {
+            if (VerifyService::user_valid($new_user)
+                && !VerifyService::username_taken($new_user->UserName)
+                && VerifyService::username_valid($new_user->UserName)) {
                 $this->current_editing = $_SESSION['currently_editing_user'] = UserService::save($new_user);
                 header("Location: index.php?module=edit");
             }

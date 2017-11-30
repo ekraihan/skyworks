@@ -37,7 +37,9 @@ class RegisterController extends Controller {
             $username_taken = VerifyService::username_taken($new_user->UserName);
 
 
-            if (VerifyService::user_valid($new_user)) {
+            if (VerifyService::user_valid($new_user)
+                && !VerifyService::username_taken($new_user->UserName)
+                && VerifyService::username_valid($new_user->UserName)) {
                 UserService::save($new_user);
                 header("Location: index.php?module=login");
             }
