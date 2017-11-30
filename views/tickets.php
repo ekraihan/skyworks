@@ -34,9 +34,11 @@
                             <div class="message"><?php echo $message->Message?></div>
                         <?php endforeach; ?>
                         <div class="reply-body"></div>
-                        <div class="reply">
-                            <button class="reply-btn" type="button">Reply</button>
-                        </div>
+                        <?php if ($_SESSION['current_person']->Role !== Roles::ADMIN) : ?>
+                            <div class="reply">
+                                <button class="reply-btn" type="button">Reply</button>
+                            </div>
+                        <?php endif; ?>
                 </form>
 
                 <form class="ticket-info" method="post" action="index.php?module=ticket&ticket_id=<?php echo $current_ticket->TicketId; ?>">
@@ -44,10 +46,10 @@
                     <div>
                         <span>Current Status:</span>
                         <?php if ($is_editing) : ?>
-                            <select>
+                            <select name="new_status">
                                 <?php foreach ($statuses as $status): ?>
-                                    <option>
-                                        <?php echo $status ?>
+                                    <option value=<?php echo $status->StatusId ?> <?php if ($current_ticket->StatusId === $status->StatusId) echo "selected"?>>
+                                        <?php echo $status->Name ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
@@ -58,17 +60,12 @@
 
                     <div>
                         <?php if ($is_editing) : ?>
-                            <button class="edit-user" name="save-btn" type="submit">Save</button>
+                            <button class="edit-user" name="save-edit" type="submit">Save</button>
+                            <button class="edit-user" type="submit">Cancel</button>
                         <?php elseif ($_SESSION['current_person']->Role === Roles::ADMIN || $_SESSION['current_person']->Role === Roles::AGENT): ?>
                             <button class="edit-user" name="edit-btn" type="submit">Edit</button>
                         <?php endif; ?>
                     </div>
-
-                    <?php if ($_SESSION['current_person']->Role === Roles::ADMIN) : ?>
-                        <div>
-                            <button class="edit-user" name="delete-btn" type="submit">Delete Ticket</button>
-                        </div>
-                    <?php endif; ?>
                 </form>
             <?php endif; ?>
         </div>

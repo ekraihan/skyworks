@@ -18,7 +18,6 @@ class TicketController extends RestrictedController
     {
         $is_editing = isset($_POST['edit-btn']);
 
-        $tickets = TicketService::get_all();
         $statuses = StatusService::get_all();
 
         $current_ticket = null;
@@ -28,6 +27,13 @@ class TicketController extends RestrictedController
             $current_ticket = TicketService::get_by_id($_GET['ticket_id']);
             $current_messages = MessageService::get_all_by_ticket_id($current_ticket->TicketId);
         }
+
+        if (isset($_POST['save-edit'])) {
+            $current_ticket->set_status($_POST['new_status']);
+            TicketService::save($current_ticket);
+        }
+
+        $tickets = TicketService::get_all();
 
         if (isset($_POST['save-message']))
         {
