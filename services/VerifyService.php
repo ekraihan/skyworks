@@ -67,12 +67,21 @@ class VerifyService {
     }
 
     /**
+     * username_taken
+     *
+     * @return      bool
+     */
+    static public function username_taken($username) {
+        return !AuthMapper::username_valid($username);
+    }
+
+    /**
      * username_valid
      *
      * @return      bool
      */
     static public function username_valid($username) {
-        return $username !== "" && AuthMapper::username_valid($username);
+        return $username !== "";
     }
 
     static public function super_admin_valid($super_admin) {

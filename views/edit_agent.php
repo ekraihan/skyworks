@@ -41,6 +41,8 @@
                 <form class="user-info" method="post" action="index.php?module=edit&action=add_agent">
                     <?php if (!$username_valid) : ?>
                         <span class='error'>Invalid Field</span>
+                    <?php elseif ($username_taken) :?>
+                        <span class='error'>Username Already Taken</span>
                     <?php endif; ?>
                     <input maxlength="50"
                            name="username"
