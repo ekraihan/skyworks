@@ -31,7 +31,17 @@
             <?php if (isset($current_ticket)) : ?>
                 <form class="message-string" method="post" action="index.php?module=ticket&ticket_id=<?php echo $current_ticket->TicketId; ?>">
                         <?php foreach ($current_messages as $message) : ?>
-                            <div class="message"><?php echo $message->Message?></div>
+                            <div class="message">
+                                <?php
+                                    if ($message->IsAgentReply){
+                                        $person = AgentService::get_by_id($ticket->AgentId);
+                                    } else {
+                                        $person = UserService::get_by_id($ticket->UserId);
+                                    }
+                                    echo "From: " . $person->FirstName . " " . $person->LastName
+                                ?><br><br>
+                                <?php echo $message->Message?>
+                            </div>
                         <?php endforeach; ?>
                         <div class="reply-body"></div>
                         <?php if ($_SESSION['current_person']->Role !== Roles::ADMIN) : ?>
