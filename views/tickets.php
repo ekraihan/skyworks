@@ -30,7 +30,7 @@
         <div class="ticket-box">
             <?php if (isset($current_ticket)) : ?>
 
-                    <?php if ($current_ticket->StatusId === "4" && !isset($current_ticket->Rating)) : ?>
+                    <?php if ($current_ticket->StatusId === "4" && !isset($current_ticket->Rating) && $_SESSION['current_person']->Role === Roles::USER) : ?>
                         <form method="post" action="index.php?module=ticket&ticket_id=<?php echo $current_ticket->TicketId; ?>">
                             <div class="pop-up-screen">
                                <div class="pop-up-box">

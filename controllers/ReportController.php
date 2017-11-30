@@ -32,8 +32,8 @@ class ReportController extends RestrictedController {
         $data = $data . "]";
         $labels = $labels . "]";
 
-        echo $data;
-        echo $labels;
+//        echo $data;
+//        echo $labels;
 
 
         include "views/reports.php";
