@@ -48,7 +48,17 @@ function test_get_all() {
     }
 }
 
+function test_update() {
+    echo "Test Update <br><br>";
+    $ticket = TicketService::get_by_id(98);
+    print_r($ticket);
+    echo "<br><br>";
+    $ticket->set_status(4)
+    ->set_rating(9.323332);
+    print_r(TicketService::save($ticket));
+}
 
 //test_save();
 //test_get_by_id();
-test_get_all();
+//test_get_all();
+test_update();
