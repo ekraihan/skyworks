@@ -18,4 +18,8 @@ class Agent extends BasePerson {
     {
         return true;
     }
+
+    function set_rating($Rating) {
+        $this->Rating = $Rating;
+    }
 }

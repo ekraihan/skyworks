@@ -45,4 +45,8 @@ class AgentService implements BaseService {
     static public function delete($agent){
         AgentMapper::delete_by_id($agent->PersonId);
     }
+
+    static public function update_rating($agentId, $incoming_rating) {
+        return AgentMapper::update_agent_rating($agentId, $incoming_rating);
+    }
 }

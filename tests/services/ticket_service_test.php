@@ -10,6 +10,8 @@ include_once "models/Ticket.php";
 include_once "services/MessageService.php";
 include_once "models/Message.php";
 
+include_once "services/AgentService.php";
+
 echo "<h3>########## Testing Ticket Service ##########</h3>";
 
 function test_save() {
@@ -58,7 +60,12 @@ function test_update() {
     print_r(TicketService::save($ticket));
 }
 
+function update_agent_rating() {
+    AgentService::update_rating(4, 5);
+}
+
 //test_save();
 //test_get_by_id();
 //test_get_all();
-test_update();
+//test_update();
+update_agent_rating();

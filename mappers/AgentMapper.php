@@ -53,4 +53,9 @@ class AgentMapper extends Mapper {
         $statement = self::get_connection()->prepare(self::$delete_by_id);
         $statement->execute(func_get_args());
     }
+
+    static function update_agent_rating($agentId, $incoming_rating) {
+        $update_agent_rating = "CALL UPDATE_AGENT_RATING(?,?)";
+        self::execute($update_agent_rating, func_get_args());
+    }
 }

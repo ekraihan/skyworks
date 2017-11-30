@@ -26,8 +26,26 @@ class TicketController extends RestrictedController
         if (isset($_GET['ticket_id']))
         {
             $current_ticket = TicketService::get_by_id($_GET['ticket_id']);
-            $user = UserService::get_by_id($current_ticket->UserId);
             $current_messages = MessageService::get_all_by_ticket_id($current_ticket->TicketId);
+        }
+
+        if (isset($_POST['submit-rating'])) {
+            if (!is_numeric($_POST['ticket-rating']) || !($_POST['ticket-rating'] <= 10 && $_POST['ticket-rating'] >=0 )) {
+                    $ticket_rating_invalid = true;
+            }
+
+
+            if (!is_numeric($_POST['agent-rating']) || !($_POST['agent-rating'] <= 10 && $_POST['agent-rating'] >=0 )) {
+                $agent_rating_invalid = true;
+            }
+
+            if (!isset($ticket_rating_invalid) && ! isset($ticket_rating_invalid)) {
+                $current_ticket->set_rating($_POST['ticket-rating']);
+                TicketService::save($current_ticket);
+
+                AgentService::update_rating($current_ticket->AgentId, $_POST['agent-rating']);
+            }
+
         }
 
         if (isset($_POST['save-edit'])) {
