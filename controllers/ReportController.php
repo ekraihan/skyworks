@@ -27,26 +27,6 @@ class ReportController extends RestrictedController {
 
         $ticket_data = json_encode($open_tickets_grouped_by_product);
 
-//        // Prepare data
-//        $data = "[";
-//        $labels = "[";
-//
-//        foreach($open_tickets_grouped_by_product as $id => $row) {
-//            $data = $data . $row['ProductCount'];
-//            $labels = $labels . $row['ProductName'];
-//            if ($id != 2) {
-//                $labels = $labels . ",";
-//                $data = $data . ",";
-//            }
-//        }
-//
-//        $data = $data . "]";
-//        $labels = $labels . "]";
-
-//        echo $data;
-//        echo $labels;
-
-
         include "views/reports.php";
     }
 

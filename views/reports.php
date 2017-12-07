@@ -28,13 +28,6 @@
             labels = labels.map((o,i) => o.ProductName + ": " + data[i])
         }
 
-
-
-//        console.log(data.map(o => o.ProductCount));
-//        var pie = new RGraph.Pie('pie-chart', <?php //print $data ?>//)
-//            .set('exploded', [15])
-//            .set('labels', <?php //print $labels ?>//)
-//            .draw();
         new RGraph.SVG.Pie({
             id: 'pie-chart',
             data: data,
@@ -46,11 +39,6 @@
 
         }).roundRobin();
 
-
-//            'pie-chart', "[1,3,4]")
-////            .set('exploded', [15])
-//            .set('labels', "['hey','dude','man']")
-//            .draw();
     })
 </script>
 
