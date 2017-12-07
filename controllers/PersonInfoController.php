@@ -9,6 +9,7 @@ include_once "controllers/RestrictedController.php";
 include_once "services/UserService.php";
 include_once "services/AgentService.php";
 include_once "services/AdminService.php";
+include_once "services/PersonService.php";
 
 class PersonInfoController extends RestrictedController
 {
@@ -17,6 +18,7 @@ class PersonInfoController extends RestrictedController
     public function __construct()
     {
         $this->is_editing = isset($_POST['edit-btn']);
+        $_SESSION['current_person'] = PersonService::get_current_person();
         $this->person = $_SESSION['current_person'];
     }
 

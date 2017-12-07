@@ -56,9 +56,9 @@
                             <div class="message">
                                 <?php
                                     if ($message->IsAgentReply){
-                                        $person = AgentService::get_by_id($ticket->AgentId);
+                                        $person = AgentService::get_by_id($message->AgentId);
                                     } else {
-                                        $person = UserService::get_by_id($ticket->UserId);
+                                        $person = UserService::get_by_id($message->UserId);
                                     }
                                     echo "From: " . $person->FirstName . " " . $person->LastName
                                 ?><br><br>
