@@ -137,9 +137,6 @@
                             <button class="edit-user" name="save_btn" type="submit">Save</button>
                         <?php else : ?>
                             <button class="edit-user" name="edit_btn" type="submit">Edit</button>
-                            <?php if ($this->current_editing->PersonId !== $_SESSION['current_person']->PersonId) : ?>
-                                <button class="edit-user" name="delete_btn" type="submit">Delete</button>
-                            <?php endif; ?>
                         <?php endif; ?>
                     </div>
                 </form>

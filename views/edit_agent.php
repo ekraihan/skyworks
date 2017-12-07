@@ -135,7 +135,6 @@
                             <button class="edit-user" name="save_btn" type="submit">Save</button>
                         <?php else : ?>
                             <button class="edit-user" name="edit_btn" type="submit">Edit</button>
-                            <button class="edit-user" name="delete_btn" type="submit">Delete</button>
                         <?php endif; ?>
                     </div>
                 </form>

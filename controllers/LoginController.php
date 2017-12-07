@@ -29,6 +29,7 @@ class LoginController extends Controller {
             }
             else
             {
+                $username = $_POST['username'];
                 $user_valid = false;
             }
         }
@@ -51,6 +52,7 @@ class LoginController extends Controller {
             }
             else
             {
+                $username = $_POST['username'];
                 $user_valid = false;
             }
         }
@@ -73,6 +75,7 @@ class LoginController extends Controller {
             }
             else
             {
+                $username = $_POST['username'];
                 $user_valid = false;
             }
         }
