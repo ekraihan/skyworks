@@ -45,24 +45,23 @@ class RegisterController extends Controller {
                 $activation_code = randomCodeGenerator(55);
                 UserService::save($new_user, $activation_code);
 
-//                $subject = "Email Activation";
-//
-//                $body =
-//                    '<p style="border-style: groove; border-radius: 7px; border-color: brown;
-//                           font-family: audiowide-regular-webfont; font-size: 23px; font-weight: normal;
-//                            text-transform: uppercase;">
-//                    Hello '. $new_user->FirstName . '. Please click on this url to activate your account.
-//             </p><br/>
-//             http://corsair.cs.iupui.edu:21191/lab4/login.php?confirmation_id='.$activation_code;
-//                $mailer = new Mail();
-//                if (($mailer->sendMail($new_user->Email, $new_user->FirstName, $subject, $body))==true)
-//                    // Transition over to confirmation_sent.php, which will tell the user that they were sent a confirmation email
-//                    header("Location: index.php?module=login?email=".$new_user->Email);
-//                else
-//                {
-//                    $send_email_error = "There was a problem sending your confirmation email. Please try again.";
-//                }
-                header("Location: index.php?module=login");
+                $subject = "Email Activation";
+
+                $body =
+                    '<p style="border-style: groove; border-radius: 7px; border-color: brown;
+                           font-family: audiowide-regular-webfont; font-size: 23px; font-weight: normal;
+                            text-transform: uppercase;">
+                    Hello '. $new_user->FirstName . '. Please click on this url to activate your account.
+             </p><br/>
+             http://corsair.cs.iupui.edu:21191/skyworks.com?code='.$activation_code;
+                $mailer = new Mail();
+                if (($mailer->sendMail($new_user->Email, $new_user->FirstName, $subject, $body))==true)
+                    // Transition over to confirmation_sent.php, which will tell the user that they were sent a confirmation email
+                    header("Location: index.php?module=login&email=".$new_user->Email);
+                else
+                {
+                    $send_email_error = "There was a problem sending your confirmation email. Please try again.";
+                }
             }
         }
 

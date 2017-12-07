@@ -34,6 +34,10 @@ class LoginController extends Controller {
             }
         }
 
+        if (isset($_GET["code"])) {
+            if(!UserService::activate_user($_GET["code"]))
+                $user_activation_failed = true;
+        }
         include "views/user_login.php";
     }
 

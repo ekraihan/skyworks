@@ -23,6 +23,12 @@
 
         <?php if (isset($_GET["email"])): ?>
             <div>Email set to <?php echo $_GET["email"] ?></div>
+        <?php elseif (isset($_GET["code"])) : ?>
+            <?php if (isset($user_activation_failed)): ?>
+                <div>User failed to activate</div>
+            <?php else : ?>
+                <div>User Successfully Activated Click <a href="index.php?module=login">here</a> to login </div>
+            <?php endif; ?>
         <?php else : ?>
             <form action="index.php?module=login" method="post">
                 <?php if (!$user_valid) : ?>

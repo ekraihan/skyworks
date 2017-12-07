@@ -50,4 +50,8 @@ class UserService implements BaseService {
     static public function delete($user){
         UserMapper::delete_by_id($user->PersonId);
     }
+
+    static public function activate_user($code) {
+        return UserMapper::activate_user($code);
+    }
 }

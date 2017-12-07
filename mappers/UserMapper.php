@@ -67,4 +67,10 @@ class UserMapper extends Mapper {
         $statement = self::get_connection()->prepare(self::$delete_by_id);
         $statement->execute(func_get_args());
     }
+
+    static function activate_user($code) {
+        $activate_user = "SELECT ACTIVATE_USER(?)";
+        $statement = self::execute($activate_user, array($code));
+        return (boolean)$statement->fetchColumn();
+    }
 }
