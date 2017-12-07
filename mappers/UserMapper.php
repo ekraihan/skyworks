@@ -12,7 +12,7 @@ class UserMapper extends Mapper {
     static private $get_user_by_username = "Call GET_USER_BY_USERNAME(?)";
     static private $get_user_by_id = "Call GET_USER_BY_ID(?)";
     static private $update_user = "Call UPDATE_USER(?,?,?,?,?,?)";
-    static private $add_user = "Call ADD_USER(?,?,?,?,?)";
+    static private $add_user = "Call ADD_USER(?,?,?,?,?,?)";
     static private $get_all_users = "CALL GET_ALL_USERS()";
     static private $delete_by_id = "CALL DELETE_USER(?)";
 
@@ -44,7 +44,7 @@ class UserMapper extends Mapper {
         return $statement->fetch();
     }
 
-    static function add($username, $first_name, $last_name, $email, $password) {
+    static function add($username, $first_name, $last_name, $email, $password, $activation_code) {
         $statement = self::get_connection()->prepare(self::$add_user);
         $statement->execute(func_get_args());
         $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');
@@ -54,6 +54,12 @@ class UserMapper extends Mapper {
     static function get_all() {
         $statement = self::get_connection()->query(self::$get_all_users);
         $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');
+        return $statement->fetchAll();
+    }
+
+    static function get_all_as_rows() {
+        $statement = self::get_connection()->query(self::$get_all_users);
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
         return $statement->fetchAll();
     }
 

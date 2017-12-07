@@ -13,7 +13,7 @@ class UserService implements BaseService {
         return UserMapper::get_by_username($username);
     }
 
-    static public function save($user)
+    static public function save($user, $activation_code = null)
     {
         if (isset($user->PersonId))
             return UserMapper::update(
@@ -30,7 +30,8 @@ class UserService implements BaseService {
                 $user->FirstName,
                 $user->LastName,
                 $user->Email,
-                $user->Password
+                $user->Password,
+                $activation_code
             );
     }
 

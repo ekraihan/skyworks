@@ -19,8 +19,8 @@
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="node_modules/datatables/media/js/jquery.dataTables.js"></script>
 
-    <script src="node_modules/rgraph/widgets/rgraph/js/RGraph.common.core.js" ></script>
-    <script src="node_modules/rgraph/widgets/rgraph/js/RGraph.pie.js" ></script>
+    <script src="node_modules/RGraph/libraries/RGraph.svg.common.core.js"></script>
+    <script src="node_modules/RGraph/libraries/RGraph.svg.pie.js"></script>
 
 </head>
 <body>

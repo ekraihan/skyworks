@@ -21,17 +21,21 @@
     <div class="login-view">
         <h1>Ticket Hawk</h1>
 
-        <form action="index.php?module=login" method="post">
-            <?php if (!$user_valid) : ?>
-                <div>Username or Password invalid</div>
-            <?php endif; ?>
-            <input placeholder="Username" name="username">
-            <input placeholder="Password" name="password" type="password">
+        <?php if (isset($_GET["email"])): ?>
+            <div>Email set to <?php echo $_GET["email"] ?></div>
+        <?php else : ?>
+            <form action="index.php?module=login" method="post">
+                <?php if (!$user_valid) : ?>
+                    <div>Username or Password invalid</div>
+                <?php endif; ?>
+                <input placeholder="Username" name="username">
+                <input placeholder="Password" name="password" type="password">
 
-            <button type="submit" name="login">Login</button>
+                <button type="submit" name="login">Login</button>
 
-            <span><a href="index.php?module=register">Register</a></span>
-            <span><a href="index.php?module=forgotpassword">Forgot Password?</a></span>
-        </form>
+                <span><a href="index.php?module=register">Register</a></span>
+                <span><a href="index.php?module=forgotpassword">Forgot Password?</a></span>
+            </form>
+        <?php endif; ?>
     </div>
 </body>
