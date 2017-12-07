@@ -25,22 +25,23 @@ class ReportController extends RestrictedController {
         foreach ($open_tickets_grouped_by_product as $ticket) fputcsv($ticket_file, $ticket);
         fclose($ticket_file);
 
-        // Prepare data
-        $data = "[";
-        $labels = "[";
+        $ticket_data = json_encode($open_tickets_grouped_by_product);
 
-        foreach($open_tickets_grouped_by_product as $id => $row) {
-            $data = $data . $row['ProductCount'];
-            $labels = $labels . $row['ProductName'];
-            if ($id != 2) {
-                $labels = $labels . ",";
-                $data = $data . ",";
-            }
-
-        }
-
-        $data = $data . "]";
-        $labels = $labels . "]";
+//        // Prepare data
+//        $data = "[";
+//        $labels = "[";
+//
+//        foreach($open_tickets_grouped_by_product as $id => $row) {
+//            $data = $data . $row['ProductCount'];
+//            $labels = $labels . $row['ProductName'];
+//            if ($id != 2) {
+//                $labels = $labels . ",";
+//                $data = $data . ",";
+//            }
+//        }
+//
+//        $data = $data . "]";
+//        $labels = $labels . "]";
 
 //        echo $data;
 //        echo $labels;

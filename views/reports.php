@@ -12,19 +12,45 @@
         $("table").DataTable({
             saveState: true,
             "order": [[ 0, "asc" ]],
-            "scrollY":        "200px"
+            "scrollY": "200px"
         })
     });
 
     $(document).ready(function ()
     {
-//        var data = <?php //print $data ?>
-//        var labels = <?php //print $labels ?>
-//        console.log(data,labels);
-        var pie = new RGraph.Pie('pie-chart', <?php print $data ?>)
-            .set('exploded', [15])
-            .set('labels', <?php print $labels ?>)
-            .draw();
+        var data = <?php print $ticket_data; ?>;
+        if (data) {
+            data = data.map(o => parseInt(o.ProductCount))
+        }
+
+        var labels = <?php print $ticket_data; ?>;
+        if (labels) {
+            labels = labels.map((o,i) => o.ProductName + ": " + data[i])
+        }
+
+
+
+//        console.log(data.map(o => o.ProductCount));
+//        var pie = new RGraph.Pie('pie-chart', <?php //print $data ?>//)
+//            .set('exploded', [15])
+//            .set('labels', <?php //print $labels ?>//)
+//            .draw();
+        new RGraph.SVG.Pie({
+            id: 'pie-chart',
+            data: data,
+            options: {
+                labels: labels,
+                title: "Open Tickets Grouped by Product",
+                exploded: 1.5
+            }
+
+        }).roundRobin();
+
+
+//            'pie-chart', "[1,3,4]")
+////            .set('exploded', [15])
+//            .set('labels', "['hey','dude','man']")
+//            .draw();
     })
 </script>
 
@@ -35,7 +61,7 @@
 </style>
 
 <a download="tickets.csv" href="reports/tickets.csv">Download Ticket Report</a><br>
-<a download="users.csv" href="reports/users.csv">Download User Report</a><br>
+<a download="users.csv" href="reports/users.csv">Download User Report</a><br><br>
 
 <table id="example" class="display" cellspacing="0" width="100%">
     <thead>
@@ -67,7 +93,5 @@
         <?php endforeach; ?>
     </tbody>
 </table>
-
-<canvas id="pie-chart" width="400" height="300">[No canvas support]</canvas>
-
-
+<br><br>
+<div id="pie-chart" style="width: 850px; height: 350px" ></div>
