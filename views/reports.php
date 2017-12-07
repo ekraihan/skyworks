@@ -34,6 +34,9 @@
     }
 </style>
 
+<a download="tickets.csv" href="reports/tickets.csv">Download Ticket Report</a><br>
+<a download="users.csv" href="reports/users.csv">Download User Report</a><br>
+
 <table id="example" class="display" cellspacing="0" width="100%">
     <thead>
         <tr>

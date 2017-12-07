@@ -9,6 +9,6 @@ class TestController extends Controller {
 
     public function default_action()
     {
-        include "tests/services/ticket_service_test.php";
+        include "tests/services/user_service_test.php";
     }
 }
