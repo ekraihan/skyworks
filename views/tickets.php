@@ -9,23 +9,25 @@
 
 <div class="ticket-view">
     <div class="tickets">
-        <div class="ticket-list">
-            <?php foreach ($tickets as $ticket) : ?>
-                <a href="index.php?module=ticket&ticket_id=<?php echo $ticket->TicketId; ?>" class="ticket">
-                    <div>Product: <?php echo ProductService::get_by_id($ticket->ProductId)->Name?></div>
-                    <div>Status: <?php echo StatusService::get_by_id($ticket->StatusId)->Name?></div>
-                    <div>Agent: <?php $agent = AgentService::get_by_id($ticket->AgentId);
-                                    echo $agent->FirstName . " " . $agent->LastName
-                                ?>
-                    </div>
-                    <div>
-                        <?php $messages = MessageService::get_all_by_ticket_id($ticket->TicketId);
-                            if (count($messages) !== 0)
-                                echo substr($messages[0]->Message,0, 25) . "...";
-                        ?>
-                    </div>
-                </a>
-            <?php endforeach; ?>
+        <div>
+            <div class="ticket-list">
+                <?php foreach ($tickets as $ticket) : ?>
+                    <a href="index.php?module=ticket&ticket_id=<?php echo $ticket->TicketId; ?>" class="ticket">
+                        <div>Product: <?php echo ProductService::get_by_id($ticket->ProductId)->Name?></div>
+                        <div>Status: <?php echo StatusService::get_by_id($ticket->StatusId)->Name?></div>
+                        <div>Agent: <?php $agent = AgentService::get_by_id($ticket->AgentId);
+                                        echo $agent->FirstName . " " . $agent->LastName
+                                    ?>
+                        </div>
+                        <div>
+                            <?php $messages = MessageService::get_all_by_ticket_id($ticket->TicketId);
+                                if (count($messages) !== 0)
+                                    echo substr($messages[0]->Message,0, 25) . "...";
+                            ?>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+            </div>
         </div>
         <div class="ticket-box">
             <?php if (isset($current_ticket)) : ?>
