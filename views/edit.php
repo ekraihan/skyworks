@@ -23,15 +23,17 @@
     </div>
     <div class="filter"></div>
     <div class="users">
-        <div class="user-list">
-            <?php foreach ($people as $person) : ?>
-                <form action="index.php?module=edit" method="post">
-                    <input type="hidden" name="user_id" value="<?php echo $person->PersonId ?>"/>
-                    <button type="submit" class="user">
-                        <?php echo $person->FirstName.' '.$person->LastName?>
-                    </button>
-                </form>
-            <?php endforeach; ?>
+        <div>
+            <div class="user-list">
+                <?php foreach ($people as $person) : ?>
+                    <form action="index.php?module=edit" method="post">
+                        <input type="hidden" name="user_id" value="<?php echo $person->PersonId ?>"/>
+                        <button type="submit" class="user">
+                            <?php echo $person->FirstName.' '.$person->LastName?>
+                        </button>
+                    </form>
+                <?php endforeach; ?>
+            </div>
             <form method="post" action="index.php?module=edit&action=add_user">
                 <button name="add_usr_btn" type="submit">+ Add User</button>
             </form>
@@ -77,7 +79,7 @@
                            value="<?php echo $new_user->Email ?>"/>
 
                     <?php if (!$password_valid) : ?>
-                        <span class='error'>Invalid Field</span>
+                        <span class='error'>Password must be at least 7 characters</span>
                     <?php endif; ?>
                     <input maxlength="50"
                            type="password"

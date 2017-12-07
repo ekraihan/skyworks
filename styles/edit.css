@@ -11,6 +11,10 @@
 .edit-view .user-list {
     display: flex;
     flex-direction: column;
+    height: calc(100vh - 270px);
+    overflow-y: scroll;
+    width: fit-content;
+    border: solid 1.2px;
 }
 
 .edit-view .user-list .user {
@@ -25,13 +29,14 @@
 }
 
 .edit-view .user-box {
-    width: 100%;
+    width: 60%;
     margin-left: 50px;
     border: 1px solid grey;
     padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: fit-content;
 }
 
 .edit-view .user-info{

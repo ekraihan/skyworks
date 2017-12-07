@@ -48,7 +48,7 @@ include_once "services/VerifyService.php";
                value="<?php echo $new_user->Email ?>"/>
 
         <?php if (!$password_valid) : ?>
-            <span class='error'>Invalid Field</span>
+            <span class='error'>Password must be at least 7 characters</span>
         <?php endif; ?>
         <input maxlength="50"
                type="password"
