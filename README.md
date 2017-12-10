@@ -26,8 +26,3 @@ You can go to "Current Tickets" to see tickets assigned to the agent. You can re
 ### General Notes
 When a ticket is closed, the next time a user views that ticket, they are asked to rate how helpful the answer was
 and how good their overall experience was
-
-### Future features
-- An admin will be able to view more detailed reports on current tickets and user ratings
-- An user will receive a confirmation email on registration
-- An admin will be able to delete users
