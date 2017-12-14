@@ -8,7 +8,7 @@
 ?>
 
 <div class="new-ticket-view">
-    <form action="index.php?module=newticket" method="post">
+<!--    <form action="index.php?module=newticket" method="post">-->
         <div>
             <span>Choose Product: </span>
             <select name="product">
@@ -30,12 +30,11 @@
             required></textarea>
         </div>
         <div>
-            <button class="submit-ticket" type="submit" name="submit"> Submit Ticket</button>
+            <button class="submit-ticket" name="submit"> Submit Ticket</button>
         </div>
-    </form>
+<!--    </form>-->
 
     <div class="possible-answers"></div>
-
 </div>
 
 <script type="text/javascript" src="javascript/new-ticket.js"></script>
